@@ -1,0 +1,37 @@
+## maven隔离
+spring:
+  profiles:
+    active: @activatedProperties@
+  application:
+    name: server-center
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+  tomcat:
+    uri-encoding: UTF-8
+
+  #解决无法访问eureka页面问题
+  freemarker:
+    template-loader-path: classpath:/templates/
+    prefer-file-system-access: false
+
+server:
+  port: 8081
+
+#配置主机名
+eureka:
+  instance:
+    hostname: localhost
+
+  client:
+    #配置服务注册中心是否以自己为客户端进行注册(配置false)
+    registerWithEureka: false
+    #是否取得注册信息(配置false)
+    fetchRegistry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+logging:
+  level:
+    com: DEBUG
