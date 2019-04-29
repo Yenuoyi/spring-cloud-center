@@ -1,25 +1,18 @@
 package com.yb.user.center.export;
 
+import com.yb.user.center.common.basicmethod.BasicDTO;
+
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author yebing
  */
-public class UserDTO implements Serializable {
+public class UserDTO extends BasicDTO implements Serializable {
     private static final long serialVersionUID = -4867781418448777818L;
-    private Long id;
     private String name;
     private Date fromDate;
     private Date toDate;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -48,10 +41,12 @@ public class UserDTO implements Serializable {
     @Override
     public String toString() {
         return "UserDTO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", fromDate=" + fromDate +
                 ", toDate=" + toDate +
+                ", id=" + id +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
                 '}';
     }
 }

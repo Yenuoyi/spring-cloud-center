@@ -9,6 +9,7 @@ import com.yb.api.center.service.usercenter.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,6 +22,8 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+    @Value("user-center")
+    private String userCenter;
     @Autowired
     RestTemplate restTemplate;
     @Override
@@ -41,8 +44,8 @@ public class UserServiceImpl implements UserService {
     @Override
     @HystrixCommand(fallbackMethod = "serviceError")
     public UserDTO selectByPrimaryKey(Long id) {
-        String forObject = restTemplate.getForObject("http://user-center/user/selectByPrimaryKey", String.class);
-        System.out.println(forObject);
+        String forObject = restTemplate.getForObject("http://"+userCenter+"/user/selectByPrimaryKey", String.class);
+        logger.info("user-center返回结果：{}",forObject);
         UserDTO userDTO = JSONObject.parseObject(forObject,UserDTO.class);
         return userDTO;
     }
@@ -63,7 +66,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 保持入参、返回参数类型与原方法一致
+     * 断路器，保持入参、返回参数类型与原方法一致
      * @param name
      * @return
      */

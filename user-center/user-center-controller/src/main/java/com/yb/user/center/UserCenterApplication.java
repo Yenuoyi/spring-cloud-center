@@ -21,6 +21,10 @@ public class UserCenterApplication {
         SpringApplication.run(UserCenterApplication.class, args);
     }
 
+    /**
+     * 服务链调用监控方法
+     * @return
+     */
     @Bean
     public Sampler defaultSampler() {
         return Sampler.ALWAYS_SAMPLE;
