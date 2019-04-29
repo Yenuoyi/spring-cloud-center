@@ -1,5 +1,6 @@
 package com.yb.api.center;
 
+import brave.sampler.Sampler;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,16 +25,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableHystrix
 public class ApiCenterApplication {
     public static void main(String[] args) {
-        ConfigurableApplicationContext run = SpringApplication.run(ApiCenterApplication.class, args);
-        /*Object userController = run.getBean("userController");
-        Object userService = run.getBean("userService");
-        UserDao userDao = (UserDao)run.getBean("userDao");
-        UserDTO userDTO = userDao.selectByPrimaryKey(1L);
-        String[] beanDefinitionNames = run.getBeanDefinitionNames();
-        for(int i=0;i<beanDefinitionNames.length;i++){
-            System.out.println(beanDefinitionNames[i]);
-        }
-        System.out.println(userController.getClass().getName()+ userDTO.toString());*/
+        SpringApplication.run(ApiCenterApplication.class, args);
     }
 
     @Bean
@@ -42,4 +34,8 @@ public class ApiCenterApplication {
         return new RestTemplate();
     }
 
+    @Bean
+    public Sampler defaultSampler() {
+        return Sampler.ALWAYS_SAMPLE;
+    }
 }

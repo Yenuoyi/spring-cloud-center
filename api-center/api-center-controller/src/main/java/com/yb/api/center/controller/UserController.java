@@ -1,4 +1,4 @@
-package com.yb.api.center.api;
+package com.yb.api.center.controller;
 
 import com.yb.api.center.export.UserDTO;
 import com.yb.api.center.service.usercenter.UserService;
