@@ -18,6 +18,13 @@
     </properties>
 
     <dependencies>
+        <!-- start 内部工程模块引入 -->
+        <dependency>
+            <groupId>com.yb</groupId>
+            <artifactId>api-center-service</artifactId>
+        </dependency>
+        <!-- end 内部工程模块引入 -->
+
         <!-- Start Spring Cloud -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -67,10 +74,16 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- swagger start -->
         <dependency>
-            <groupId>com.yb</groupId>
-            <artifactId>api-center-service</artifactId>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
+        <!-- swagger end -->
     </dependencies>
 
     <build>

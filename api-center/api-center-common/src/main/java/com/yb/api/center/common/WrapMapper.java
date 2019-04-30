@@ -1,4 +1,4 @@
-package com.yb.user.center.common;
+package com.yb.api.center.common;
 
 /**
  * @author yebing

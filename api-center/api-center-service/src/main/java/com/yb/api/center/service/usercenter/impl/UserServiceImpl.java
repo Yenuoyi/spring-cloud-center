@@ -72,6 +72,8 @@ public class UserServiceImpl implements UserService {
      */
     public UserDTO serviceError(Long name) {
         logger.info("hi,"+name+",sorry,error!");
-        return null;
+        UserDTO userDTO = new UserDTO();
+        userDTO.setId(-1L);
+        return userDTO;
     }
 }

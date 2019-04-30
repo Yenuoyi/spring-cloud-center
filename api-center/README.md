@@ -1,5 +1,9 @@
 # spring-cloud-center
-用户中心，如有其它中心可copy此中心作为模板
+API中心，如有其它中心可copy此中心作为模板
+
+默认不开启Spring Security，进入common.config.spring.security.WebSecurityConfigurer下
+配置过滤路径，默认开启全部不过滤：
+                .antMatchers("/**").permitAll()
 
 此工程仅做API逻辑处理，已引入dao、service、controller测试。
 访问：http://localhost:8080/user/selectByPrimaryKey
