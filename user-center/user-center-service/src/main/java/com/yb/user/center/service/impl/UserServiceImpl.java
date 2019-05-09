@@ -1,6 +1,6 @@
 package com.yb.user.center.service.impl;
 
-import com.yb.user.center.common.basicmethod.BasicServiceImpl;
+import com.yb.common.center.basicmethod.BasicServiceImpl;
 import com.yb.user.center.dao.UserDao;
 import com.yb.user.center.export.UserDTO;
 import com.yb.user.center.service.UserService;

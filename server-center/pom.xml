@@ -21,7 +21,7 @@
         <java.version>1.8</java.version>
         <self.version>1.0.0-SNAPSHOT</self.version>
         <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
-        <spring-boot.version>2.1.4.RELEASE</spring-boot.version>
+        <springboot.version>2.1.4.RELEASE</springboot.version>
     </properties>
 
     <modules>
@@ -88,18 +88,18 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
-                <version>${spring-boot.version}</version>
+                <version>${springboot.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-redis</artifactId>
-                <version>${spring-boot.version}</version>
+                <version>${springboot.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
                 <scope>test</scope>
-                <version>${spring-boot.version}</version>
+                <version>${springboot.version}</version>
             </dependency>
             <!-- SpringBoot -->
 
@@ -129,6 +129,25 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <!-- start 阿里json解析器-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.57</version>
+        </dependency>
+        <!-- end 阿里json解析器 -->
+
+        <!-- start redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
+        <!-- end redis -->
+
+    </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>

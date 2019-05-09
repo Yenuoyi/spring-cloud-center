@@ -1,6 +1,6 @@
 package com.yb.user.center.export;
 
-import com.yb.user.center.common.basicmethod.BasicDTO;
+import com.yb.common.center.basicmethod.BasicDTO;
 
 import java.io.Serializable;
 import java.util.Date;

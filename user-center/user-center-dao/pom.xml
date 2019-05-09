@@ -22,6 +22,13 @@
             <artifactId>user-center-common</artifactId>
         </dependency>
 
+        <!-- start center module-->
+        <dependency>
+            <groupId>com.yb</groupId>
+            <artifactId>common-core</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!-- end center module -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>

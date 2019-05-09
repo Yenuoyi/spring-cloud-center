@@ -1,4 +1,4 @@
-package com.yb.user.center.api;
+package com.yb.user.center.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

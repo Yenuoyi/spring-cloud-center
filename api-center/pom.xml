@@ -162,11 +162,21 @@
     </dependencyManagement>
 
     <dependencies>
+        <!-- start 阿里json解析器-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.57</version>
         </dependency>
+        <!-- end 阿里json解析器 -->
+
+        <!-- start redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
+        <!-- end redis -->
 
     </dependencies>
 
