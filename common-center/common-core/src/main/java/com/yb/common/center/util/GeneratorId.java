@@ -37,7 +37,6 @@ public class GeneratorId {
 
     /**
      * 获取前缀+长度的字符串编码
-     * @param prefix
      * @param numberLength
      * @return
      */

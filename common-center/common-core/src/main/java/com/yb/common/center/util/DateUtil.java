@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -21,7 +22,7 @@ public class DateUtil {
     public static final String HM = "HHmm";
     public static final String HM_COLON = "HH:mm";
     public static final String YMDHMS = "yyyyMMddHHmmss";
-    public static Map<String,SimpleDateFormat> simpleDateFormatMap;
+    public static Map<String,SimpleDateFormat> simpleDateFormatMap = new HashMap<>(16);
 
     /**
      * 获取指定格式SimpleDateFormat
