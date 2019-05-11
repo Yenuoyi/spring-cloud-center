@@ -1,14 +1,18 @@
 package com.yb.user.center.common.aop;
 
+import com.alibaba.fastjson.JSONObject;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.CodeSignature;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author yebing
@@ -25,29 +29,24 @@ public class AopTest {
 
     @Around(value = "aopPointCut()")
     public Object around(ProceedingJoinPoint joinPoint){
+        Map<String,Object> map = new HashMap<>(16);
         Object proceed = null;
-        /* 方法名 */
-        Signature signature = joinPoint.getSignature();
-        /* 参数 */
-        Object[] args = joinPoint.getArgs();
-        String kind = joinPoint.getKind();
-        System.out.println("kind:"+kind);
-        for(int i=0;i<args.length;i++){
-            System.out.println("args name"+":"+args[i].toString()+"  args value:"+args[i]);
-        }
-        System.out.println("signature:"+signature);
         try {
-            proceed = joinPoint.proceed();
-            Object target = joinPoint.getTarget();
-            Class<?> aClass = target.getClass();
-            /*注入方法名*/
-            String name = signature.getName();
-            Method declaredMethod = aClass.getMethod(name,Long.class);
-            Parameter[] parameters = declaredMethod.getParameters();
-            for(int j=0;j<parameters.length;j++){
-                System.out.println("param:"+parameters[j]);
+            /* 方法名 */
+            CodeSignature signature = (CodeSignature)joinPoint.getSignature();
+            /*参数名*/
+            String[] parameterNames = signature.getParameterNames();
+            /* 参数值 */
+            Object[] args = joinPoint.getArgs();
+            String kind = joinPoint.getKind();
+            System.out.println("kind:"+kind);
+            /*注入map*/
+            for(int i=0;i<args.length;i++){
+                map.put(parameterNames[i],args[i]);
             }
-            System.out.println();
+            System.out.println("signature:"+ JSONObject.toJSONString(signature));
+            System.out.println("map:"+ JSONObject.toJSONString(map));
+            proceed = joinPoint.proceed();
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
