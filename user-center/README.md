@@ -10,4 +10,4 @@ service继承BasicService
 serviceImpl继承BasicServiceImpl
 dao继承BasicDao
 
-
+SQL参考项目中sql文件，启动此项目前先启动server-center，否则请controller去除springcloud引入包，并在application中移除注解，application配置文件中去除配置。

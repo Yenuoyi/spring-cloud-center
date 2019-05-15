@@ -9,4 +9,5 @@ import java.util.List;
  * @author yebing
  */
 public interface UserService extends BasicService<UserDTO,UserDao> {
+    UserDTO selectOne();
 }

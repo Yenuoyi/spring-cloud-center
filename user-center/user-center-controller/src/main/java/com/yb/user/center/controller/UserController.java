@@ -32,13 +32,10 @@ public class UserController extends BasicController<UserDTO,UserService> {
      * @param id
      * @return
      */
-    @GetMapping(value = "/selectKey",produces = "application/json")
+    @GetMapping(value = "/selectOne",produces = "application/json")
     public Wrapper<?> selectKey(@RequestParam Long id){
-        ExecuteResult<UserDTO> executeResult = basicService.selectByPrimaryKey(id);
-        if(executeResult.isSuccess()){
-            return WrapMapper.ok().result(executeResult);
-        }
-        return WrapMapper.error().result(executeResult);
+        UserDTO userDTO = basicService.selectOne();
+        return WrapMapper.ok().result(userDTO);
     }
 
     @GetMapping(value = "/setRedis",produces = "application/json")

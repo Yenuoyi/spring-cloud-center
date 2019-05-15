@@ -1,6 +1,5 @@
-package com.yb.common.center.demo;
+package com.yb.common.center.aop;
 
-import com.yb.common.center.util.GeneratorId;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -8,13 +7,12 @@ import java.lang.reflect.Method;
 /**
  * @author yebing
  */
-@Vo(name = "class name")
-public class TestVo {
-
-    public TestVo(){
+@AopAnnotation(name = "class name")
+public class AopDemo {
+    public AopDemo(){
         try {
             Field name = this.getClass().getDeclaredField("name");
-            Vo annotation = name.getAnnotation(Vo.class);
+            AopAnnotation annotation = name.getAnnotation(AopAnnotation.class);
             String strategy = annotation.strategy();
             Class aClass = Class.forName(strategy);
             Method declaredMethod = aClass.getMethod("getSequenceByPrefixAndLength",String.class,Integer.class);
@@ -32,10 +30,10 @@ public class TestVo {
             e.printStackTrace();
         }
     }
-    @Vo(name = "hello")
+    @AopAnnotation(name = "hello")
     private String name;
 
-    @Vo(name = "get hello")
+    @AopAnnotation(name = "get hello")
     public String getName() {
         return name;
     }
@@ -45,18 +43,18 @@ public class TestVo {
     }
 
     public static void main(String[]  args){
-        TestVo testVo = new TestVo();
-        System.out.println("name:"+testVo.getName());
-        Vo declaredAnnotation = null;
-        Vo className = null;
-        Vo method = null;
+        AopDemo aopDemo = new AopDemo();
+        System.out.println("name:"+ aopDemo.getName());
+        AopAnnotation declaredAnnotation = null;
+        AopAnnotation className = null;
+        AopAnnotation method = null;
         try {
-            boolean annotation = testVo.getClass().isAnnotationPresent(Vo.class);
+            boolean annotation = aopDemo.getClass().isAnnotationPresent(AopAnnotation.class);
             if(annotation == true){
-                className = testVo.getClass().getAnnotation(Vo.class);
+                className = aopDemo.getClass().getAnnotation(AopAnnotation.class);
             }
-            declaredAnnotation = testVo.getClass().getDeclaredField("name").getAnnotation(Vo.class);
-            method = testVo.getClass().getDeclaredMethod("getName",null).getAnnotation(Vo.class);
+            declaredAnnotation = aopDemo.getClass().getDeclaredField("name").getAnnotation(AopAnnotation.class);
+            method = aopDemo.getClass().getDeclaredMethod("getName",null).getAnnotation(AopAnnotation.class);
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
