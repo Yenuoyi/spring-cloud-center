@@ -1,4 +1,4 @@
-package com.yb.common.center.basicmethod;
+package com.yb.common.center.basic.method;
 
 import com.yb.common.center.wrap.DataUtil;
 import com.yb.common.center.wrap.ExecuteResult;

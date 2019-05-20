@@ -35,6 +35,23 @@ public class HttpUtil {
         RequestConfig config = RequestConfig.custom().setConnectTimeout(60000).setSocketTimeout(600000).build();
         httpClient = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
     }
+
+    /**
+     * 设置请求头
+     * @param httpPost
+     * @param header
+     */
+    public static void setHeader(HttpPost httpPost, Map<String,String> header){
+        /* start 请求头参数设置*/
+        if(header != null && header.size() != 0){
+            Set<Map.Entry<String, String>> entries = header.entrySet();
+            Iterator<Map.Entry<String, String>> iterator = entries.iterator();
+            while(iterator.hasNext()){
+                Map.Entry<String, String> next = iterator.next();
+                httpPost.addHeader(next.getKey(),next.getValue());
+            }
+        }
+    }
     public static String post(String url, Map<String,String> header, String param){
         PrintWriter out = null;
         BufferedReader in = null;
@@ -97,15 +114,7 @@ public class HttpUtil {
     public static String doPostJSON(String url, Map<String,String> header, String param){
         HttpPost httpPost = new HttpPost(url);
         try{
-            /* start 请求头参数设置*/
-            if(header != null && header.size() != 0){
-                Set<Map.Entry<String, String>> entries = header.entrySet();
-                Iterator<Map.Entry<String, String>> iterator = entries.iterator();
-                while(iterator.hasNext()){
-                    Map.Entry<String, String> next = iterator.next();
-                    httpPost.addHeader(next.getKey(),next.getValue());
-                }
-            }
+            setHeader(httpPost,header);
             /* 请求参数设置 */
             if(param != null && StringUtils.isEmpty(param)){
                 httpPost.setEntity(new StringEntity(param));
@@ -136,7 +145,7 @@ public class HttpUtil {
     }
 
     /**
-     * JSON形式FORM请求
+     * FORM请求
      * @param url
      * @param header
      * @param form
@@ -145,15 +154,7 @@ public class HttpUtil {
     public static String doPostForm(String url, Map<String,String> header, Map<String,String> form){
         HttpPost httpPost = new HttpPost(url);
         try{
-            /* start 请求头参数设置*/
-            if(header != null && header.size() != 0){
-                Set<Map.Entry<String, String>> entries = header.entrySet();
-                Iterator<Map.Entry<String, String>> iterator = entries.iterator();
-                while(iterator.hasNext()){
-                    Map.Entry<String, String> next = iterator.next();
-                    httpPost.addHeader(next.getKey(),next.getValue());
-                }
-            }
+            setHeader(httpPost,header);
             /* 请求参数设置 */
             if(form != null && StringUtils.isEmpty(form)){
                 List<BasicNameValuePair> pair =new ArrayList<BasicNameValuePair>();
@@ -190,7 +191,7 @@ public class HttpUtil {
     }
 
     /**
-     * JSON形式FORM请求
+     * FORM带文件请求
      * @param url
      * @param header
      * @param form
@@ -199,33 +200,7 @@ public class HttpUtil {
     public static String doPostMultipart(String url, Map<String,String> header, Map<String,String> form, Map<String,String> formData){
         HttpPost httpPost = new HttpPost(url);
         try{
-            /* start 请求头参数设置*/
-            if(header != null && header.size() != 0){
-                Set<Map.Entry<String, String>> entries = header.entrySet();
-                Iterator<Map.Entry<String, String>> iterator = entries.iterator();
-                while(iterator.hasNext()){
-                    Map.Entry<String, String> next = iterator.next();
-                    httpPost.addHeader(next.getKey(),next.getValue());
-                }
-            }
-            /* 请求参数设置 */
-            /*if(form != null && StringUtils.isEmpty(form)){
-                //创建 MultipartEntityBuilder,以此来构建我们的参数
-                MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
-                //设置字符编码，防止乱码
-                ContentType contentType=ContentType.create("text/plain", Charset.forName("UTF-8"));
-                //填充我们的文本内容，这里相当于input 框中的 name 与value
-
-                //我们遍历map 将数据转化为我们的表单数据
-                for (Map.Entry<String,String> entry:
-                        form.entrySet()) {
-                    entityBuilder.addPart(entry.getKey(), new StringBody("value",contentType));
-                }
-                //上传我们的文件
-                entityBuilder.addBinaryBody("filename", new File("C:\\Users\\Administrator\\Desktop\\testImg.png"));
-                //参数组装
-                httpPost.setEntity(entityBuilder.build());
-            }*/
+            setHeader(httpPost,header);
             CloseableHttpResponse response = httpClient.execute(httpPost);
             int statusCode = response.getStatusLine().getStatusCode();
             if (statusCode != 200) {

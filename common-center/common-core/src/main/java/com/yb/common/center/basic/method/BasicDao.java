@@ -1,6 +1,7 @@
-package com.yb.common.center.basicmethod;
+package com.yb.common.center.basic.method;
 
 import com.yb.common.center.Pager;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -14,18 +15,18 @@ import java.util.List;
 @Repository
 public interface BasicDao<T extends BasicDTO> {
     /**
-     * 根据主键删除实体
-     * @param id
-     * @return
-     */
-    Integer deleteByPrimaryKey(Long id);
-
-    /**
      * 插入实体
      * @param record
      * @return
      */
     Integer insert(T record);
+
+    /**
+     * 根据主键删除实体
+     * @param id
+     * @return
+     */
+    Integer deleteByPrimaryKey(Long id);
 
     /**
      * 可选参数插入实体
