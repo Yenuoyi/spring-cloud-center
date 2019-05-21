@@ -1,16 +1,32 @@
 package com.yb.common.center.map;
 
+/**
+ * @author yebing
+ */
 public class CustomizeHashMap<K,V> implements CustomizeMap<K,V>  {
-    public int initial = 16;
-    public int size = 0;
-    EntrySet[] table = new EntrySet[initial];
+    /** 默认初始化大小*/
+    static final int DEFAULT_INITIAL_CAPACITY = 16;
+    /** 默认加载因子*/
+    static final float DEFAULT_LOAD_FACTOR = 0.75F;
+    /** map数组 */
+    EntrySet[] table = null;
+    final float loadFactor;
+    /** map实际大小 */
+    int size = 0;
+    /** map规定大小 */
+    int capacity;
+
 
     public CustomizeHashMap(){
-        new CustomizeHashMap(initial);
+        this(DEFAULT_INITIAL_CAPACITY,DEFAULT_LOAD_FACTOR);
     }
-    public CustomizeHashMap(int initialSize){
-        this.initial = initial;
+
+    public CustomizeHashMap(int initialSize,float loadFactor){
+        this.capacity = initialSize;
+        this.loadFactor = loadFactor;
+        table = new EntrySet[capacity];
     }
+
     @Override
     public K getKey(K k) {
         int hash = hash(k);
@@ -47,9 +63,6 @@ public class CustomizeHashMap<K,V> implements CustomizeMap<K,V>  {
 
     @Override
     public V put(K k, V v){
-        if(size >= initial){
-            return null;
-        }
         int hash = hash(k);
         EntrySet entry = table[hash];
         EntrySet entryNew = new EntrySet(k, v);
@@ -92,9 +105,9 @@ public class CustomizeHashMap<K,V> implements CustomizeMap<K,V>  {
     }
 
     @Override
-    public int hash(K k) {
-        int index = Math.abs(k.hashCode() % (initial - 1));
-        return index;
+    public int hash(K key) {
+        int h;
+        return (key == null) ? 0 : Math.abs(key.hashCode())%capacity;
     }
 
     public class EntrySet<K,V> implements Entry<K,V>{
@@ -118,10 +131,14 @@ public class CustomizeHashMap<K,V> implements CustomizeMap<K,V>  {
     }
 
     public static void main(String[] args){
-        CustomizeMap<String,String> customizeMap = new CustomizeHashMap<>(16);
+        CustomizeMap<String,String> customizeMap = new CustomizeHashMap<>();
         customizeMap.put("yebing","I Love You!");
         String yebing = customizeMap.getKey("yebing");
         System.out.print(yebing);
-
+        int t = (4 & -2);
+        System.out.println(t);
+        String a = Integer.toBinaryString(4);
+        String b = Integer.toBinaryString(-2);
+        System.out.println(b);
     }
 }
