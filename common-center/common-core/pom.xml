@@ -53,6 +53,13 @@
             <artifactId>jedis</artifactId>
         </dependency>
         <!-- end redis -->
+
+        <!-- Rocket MQ -->
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-client</artifactId>
+        </dependency>
+        <!-- end Rocket MQ -->
     </dependencies>
 
 
