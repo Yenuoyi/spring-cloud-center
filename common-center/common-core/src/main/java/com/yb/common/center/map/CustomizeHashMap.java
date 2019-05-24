@@ -1,5 +1,7 @@
 package com.yb.common.center.map;
 
+import com.alibaba.fastjson.JSONObject;
+
 /**
  * @author yebing
  */
@@ -134,7 +136,9 @@ public class CustomizeHashMap<K,V> implements CustomizeMap<K,V>  {
         CustomizeMap<String,String> customizeMap = new CustomizeHashMap<>();
         customizeMap.put("yebing","I Love You!");
         String yebing = customizeMap.getKey("yebing");
-        System.out.print(yebing);
+        System.out.println(yebing);
+        System.out.println(JSONObject.toJSONString(customizeMap));
+
         int t = (4 & -2);
         System.out.println(t);
         String a = Integer.toBinaryString(4);
