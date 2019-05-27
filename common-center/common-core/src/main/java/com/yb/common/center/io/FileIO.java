@@ -1,5 +1,8 @@
 package com.yb.common.center.io;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
@@ -9,14 +12,16 @@ import java.nio.charset.Charset;
  * @author yebing
  */
 public class FileIO {
-    public static String readFile(String filePath){
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    public String readFile(String filePath){
         FileInputStream fileInputStream = null;
+        FileChannel fileChannel = null;
         StringBuffer stringBuffer = new StringBuffer("");
         try {
             File file = new File(filePath);
             fileInputStream = new FileInputStream(file);
 
-            FileChannel fileChannel = fileInputStream.getChannel();
+            fileChannel = fileInputStream.getChannel();
             //创建缓冲区
             ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
             boolean ok = true;
@@ -36,18 +41,54 @@ public class FileIO {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if(fileInputStream != null){
-                try {
-                    fileInputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+            try {
+                if(fileChannel != null){
+                    fileChannel.close();
                 }
+                if(fileInputStream != null){
+                    fileInputStream.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+
         }
         return stringBuffer.toString();
     }
 
-    public static void method1(String str, String match){
+    public void writeFile(String filePath,boolean append){
+        FileOutputStream fileOutputStream = null;
+        FileChannel fileChannel = null;
+        try {
+            File file = new File(filePath);
+            fileOutputStream = new FileOutputStream(file,append);
+            fileChannel = fileOutputStream.getChannel();
+            //创建缓冲区
+            ByteBuffer writeByteBuffer = ByteBuffer.allocate(1024);
+            byte[] bytes = new String("Hello 叶冰!").getBytes();
+            writeByteBuffer.put(bytes);
+            //从通道中读取数据
+            writeByteBuffer.flip();
+            fileChannel.write(writeByteBuffer);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try{
+                if(fileChannel.isOpen()){
+                    fileChannel.close();
+                }
+                if(fileOutputStream != null){
+                    fileOutputStream.close();
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void methodOne(String str, String match){
         int nameNum = 0;
         String name = "叶冰";
         int nameIndex = 0;
@@ -66,19 +107,25 @@ public class FileIO {
         System.out.println(nameNum);
     }
 
-    public static void method2(String str, String match){
+    public void methodTwo(String str, String match){
         int count= 0;
         int index = 0;
-        System.out.println(str.length());
+        logger.info("str长度："+str.length());
         while( index >= 0 && index <= str.length()){
             ++count;
-            index = str.indexOf(match,index);
+            int tmpIndex = str.indexOf(match, index);
+            if(index == tmpIndex){
+                break;
+            }else{
+                index = tmpIndex;
+            }
         }
         System.out.println(count);
     }
         public static void main(java.lang.String[] args) {
-        String str = readFile("E:/Desktop/test.txt");
-        /*method2(str,"叶冰");*/
-        System.out.println(str.indexOf("叶冰",24));
+        FileIO fileIO = new FileIO();
+        String str = fileIO.readFile("E:/Desktop/test.txt");
+        fileIO.methodTwo(str,"叶冰");
+        fileIO.writeFile("E:/Desktop/test.txt",true);
     }
 }

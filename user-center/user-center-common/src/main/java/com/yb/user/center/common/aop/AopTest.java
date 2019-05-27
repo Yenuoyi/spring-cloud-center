@@ -2,15 +2,11 @@ package com.yb.user.center.common.aop;
 
 import com.alibaba.fastjson.JSONObject;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.aspectj.lang.reflect.CodeSignature;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
-
-import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -61,6 +57,15 @@ public class AopTest {
                 System.out.println("map:"+ JSONObject.toJSONString(map));
             }
 
+            /* 异常获取当前线程栈 */
+            StackTraceElement[] throwableStackTrace = new Throwable().getStackTrace();
+            for(StackTraceElement stackTraceElement : throwableStackTrace){
+            }
+
+            /* 当前线程获取线程栈 */
+            StackTraceElement[] threadStackTrace = Thread.currentThread().getStackTrace();
+            for(StackTraceElement stackTraceElement : threadStackTrace){
+            }
             /*执行被切方法*/
             proceed = joinPoint.proceed();
         } catch (Throwable throwable) {
