@@ -12,10 +12,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 /**
+ * @author yebing
  * @EnableEurekaClient:注册为客户端
  * @EnableDiscoveryClient：能够发现客户端服务
  * @EnableHystrix：断路器
- * @author yebing
  */
 @SpringBootApplication(scanBasePackages = {"com.yb.zuul"})
 @EnableZuulProxy

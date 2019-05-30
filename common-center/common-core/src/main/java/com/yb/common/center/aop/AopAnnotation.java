@@ -8,5 +8,6 @@ import java.lang.annotation.*;
 @Target({ElementType.PACKAGE, ElementType.TYPE, ElementType.METHOD, ElementType.FIELD})
 public @interface AopAnnotation {
     String name() default "hello";
+
     String strategy() default "com.yb.common.center.util.GeneratorId";
 }

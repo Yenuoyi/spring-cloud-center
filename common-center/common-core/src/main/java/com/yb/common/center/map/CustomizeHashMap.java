@@ -5,25 +5,35 @@ import com.alibaba.fastjson.JSONObject;
 /**
  * @author yebing
  */
-public class CustomizeHashMap<K,V> implements CustomizeMap<K,V>  {
-    /** 默认初始化大小*/
+public class CustomizeHashMap<K, V> implements CustomizeMap<K, V> {
+    /**
+     * 默认初始化大小
+     */
     static final int DEFAULT_INITIAL_CAPACITY = 16;
-    /** 默认加载因子*/
+    /**
+     * 默认加载因子
+     */
     static final float DEFAULT_LOAD_FACTOR = 0.75F;
-    /** map数组 */
+    /**
+     * map数组
+     */
     EntrySet[] table = null;
     final float loadFactor;
-    /** map实际大小 */
+    /**
+     * map实际大小
+     */
     int size = 0;
-    /** map规定大小 */
+    /**
+     * map规定大小
+     */
     int capacity;
 
 
-    public CustomizeHashMap(){
-        this(DEFAULT_INITIAL_CAPACITY,DEFAULT_LOAD_FACTOR);
+    public CustomizeHashMap() {
+        this(DEFAULT_INITIAL_CAPACITY, DEFAULT_LOAD_FACTOR);
     }
 
-    public CustomizeHashMap(int initialSize,float loadFactor){
+    public CustomizeHashMap(int initialSize, float loadFactor) {
         this.capacity = initialSize;
         this.loadFactor = loadFactor;
         table = new EntrySet[capacity];
@@ -34,12 +44,12 @@ public class CustomizeHashMap<K,V> implements CustomizeMap<K,V>  {
         int hash = hash(k);
         EntrySet entrySet = table[hash];
         boolean nextNode = true;
-        while(nextNode){
-            if(entrySet.k == k){
+        while (nextNode) {
+            if (entrySet.k == k) {
                 return k;
-            }else if(entrySet.next != null){
+            } else if (entrySet.next != null) {
                 entrySet = entrySet.next;
-            }else {
+            } else {
                 nextNode = false;
             }
         }
@@ -51,12 +61,12 @@ public class CustomizeHashMap<K,V> implements CustomizeMap<K,V>  {
         int hash = hash(k);
         EntrySet entrySet = table[hash];
         boolean nextNode = true;
-        while(nextNode){
-            if(entrySet.k == k){
+        while (nextNode) {
+            if (entrySet.k == k) {
                 return (V) entrySet.v;
-            }else if(entrySet.next != null){
+            } else if (entrySet.next != null) {
                 entrySet = entrySet.next;
-            }else {
+            } else {
                 nextNode = false;
             }
         }
@@ -64,11 +74,11 @@ public class CustomizeHashMap<K,V> implements CustomizeMap<K,V>  {
     }
 
     @Override
-    public V put(K k, V v){
+    public V put(K k, V v) {
         int hash = hash(k);
         EntrySet entry = table[hash];
         EntrySet entryNew = new EntrySet(k, v);
-        if(entry != null){
+        if (entry != null) {
             entryNew.next = entry;
             entry.pre = entryNew;
         }
@@ -82,24 +92,24 @@ public class CustomizeHashMap<K,V> implements CustomizeMap<K,V>  {
         int hash = hash(k);
         EntrySet entrySet = table[hash];
         boolean nextNode = true;
-        while(nextNode){
-            if(entrySet.k == k){
+        while (nextNode) {
+            if (entrySet.k == k) {
                 EntrySet pre = entrySet.pre;
                 EntrySet next = entrySet.next;
-                if(pre == null && next != null){
+                if (pre == null && next != null) {
                     table[hash] = next;
-                }else if(pre == null && next == null){
+                } else if (pre == null && next == null) {
                     table[hash] = null;
-                }else if(pre != null && next != null){
+                } else if (pre != null && next != null) {
                     pre.next = next;
                     next.pre = pre;
-                }else if(pre != null && next == null){
+                } else if (pre != null && next == null) {
                     pre.next = null;
                 }
-                return (V)entrySet.v;
-            }else if(entrySet.next != null){
+                return (V) entrySet.v;
+            } else if (entrySet.next != null) {
                 entrySet = entrySet.next;
-            }else {
+            } else {
                 nextNode = false;
             }
         }
@@ -109,18 +119,20 @@ public class CustomizeHashMap<K,V> implements CustomizeMap<K,V>  {
     @Override
     public int hash(K key) {
         int h;
-        return (key == null) ? 0 : Math.abs(key.hashCode())%capacity;
+        return (key == null) ? 0 : Math.abs(key.hashCode()) % capacity;
     }
 
-    public class EntrySet<K,V> implements Entry<K,V>{
-        EntrySet<K,V> next;
-        EntrySet<K,V> pre;
+    public class EntrySet<K, V> implements Entry<K, V> {
+        EntrySet<K, V> next;
+        EntrySet<K, V> pre;
         K k;
         V v;
-        EntrySet(K k,V v){
+
+        EntrySet(K k, V v) {
             this.k = k;
             this.v = v;
         }
+
         @Override
         public K getKey(K k) {
             return this.k;
@@ -132,9 +144,9 @@ public class CustomizeHashMap<K,V> implements CustomizeMap<K,V>  {
         }
     }
 
-    public static void main(String[] args){
-        CustomizeMap<String,String> customizeMap = new CustomizeHashMap<>();
-        customizeMap.put("yebing","I Love You!");
+    public static void main(String[] args) {
+        CustomizeMap<String, String> customizeMap = new CustomizeHashMap<>();
+        customizeMap.put("yebing", "I Love You!");
         String yebing = customizeMap.getKey("yebing");
         System.out.println(yebing);
         System.out.println(JSONObject.toJSONString(customizeMap));

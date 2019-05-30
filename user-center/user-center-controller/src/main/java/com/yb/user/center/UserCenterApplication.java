@@ -27,6 +27,7 @@ public class UserCenterApplication {
 
     /**
      * 服务链调用监控方法
+     *
      * @return
      */
     @Bean

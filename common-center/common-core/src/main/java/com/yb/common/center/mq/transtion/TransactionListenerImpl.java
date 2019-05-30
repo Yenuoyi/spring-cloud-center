@@ -21,18 +21,19 @@ public class TransactionListenerImpl implements TransactionListener {
 
     /**
      * 用于在发送半消息成功时执行本地事务，成功返回成功状态，失败回滚事务,默认状态UNKNOW
+     *
      * @param msg
      * @param arg
      * @return
      */
     public LocalTransactionState executeLocalTransaction(Message msg, Object arg) {
         LocalTransactionState localTransactionState = LocalTransactionState.UNKNOW;
-        try{
+        try {
             int value = transactionIndex.getAndIncrement();
             int status = value % 3;
             localTrans.put(msg.getTransactionId(), status);
             localTransactionState = LocalTransactionState.COMMIT_MESSAGE;
-        }catch(Exception e){
+        } catch (Exception e) {
             localTransactionState = LocalTransactionState.ROLLBACK_MESSAGE;
             e.printStackTrace();
         }
@@ -42,6 +43,7 @@ public class TransactionListenerImpl implements TransactionListener {
 
     /**
      * 用于检查本地事务状态并响应MQ检查请求
+     *
      * @param msg
      * @return
      */

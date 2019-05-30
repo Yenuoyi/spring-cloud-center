@@ -25,12 +25,14 @@ import java.util.*;
 
 /**
  * Http请求工具
+ *
  * @author yebing
  */
 public class HttpUtil {
     private static CloseableHttpClient httpClient;
     public static final String CHARSET = "UTF-8";
-    static{
+
+    static {
         /*设置连接超时为30s,等待超时为10分钟*/
         RequestConfig config = RequestConfig.custom().setConnectTimeout(60000).setSocketTimeout(600000).build();
         httpClient = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
@@ -38,21 +40,23 @@ public class HttpUtil {
 
     /**
      * 设置请求头
+     *
      * @param httpPost
      * @param header
      */
-    public static void setHeader(HttpPost httpPost, Map<String,String> header){
+    public static void setHeader(HttpPost httpPost, Map<String, String> header) {
         /* start 请求头参数设置*/
-        if(header != null && header.size() != 0){
+        if (header != null && header.size() != 0) {
             Set<Map.Entry<String, String>> entries = header.entrySet();
             Iterator<Map.Entry<String, String>> iterator = entries.iterator();
-            while(iterator.hasNext()){
+            while (iterator.hasNext()) {
                 Map.Entry<String, String> next = iterator.next();
-                httpPost.addHeader(next.getKey(),next.getValue());
+                httpPost.addHeader(next.getKey(), next.getValue());
             }
         }
     }
-    public static String post(String url, Map<String,String> header, String param){
+
+    public static String post(String url, Map<String, String> header, String param) {
         PrintWriter out = null;
         BufferedReader in = null;
         String result = "";
@@ -61,13 +65,13 @@ public class HttpUtil {
             // 打开和URL之间的连接
             URLConnection urlConnection = realUrl.openConnection();
             urlConnection.setConnectTimeout(3000);
-            if(header != null && header.size() != 0){
+            if (header != null && header.size() != 0) {
                 /* start 请求头参数设置*/
                 Set<Map.Entry<String, String>> entries = header.entrySet();
                 Iterator<Map.Entry<String, String>> iterator = entries.iterator();
-                while(iterator.hasNext()){
+                while (iterator.hasNext()) {
                     Map.Entry<String, String> next = iterator.next();
-                    urlConnection.setRequestProperty(next.getKey(),next.getValue());
+                    urlConnection.setRequestProperty(next.getKey(), next.getValue());
                 }
             }
 
@@ -88,16 +92,15 @@ public class HttpUtil {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally{
-            try{
-                if(out!=null){
+        } finally {
+            try {
+                if (out != null) {
                     out.close();
                 }
-                if(in!=null){
+                if (in != null) {
                     in.close();
                 }
-            }
-            catch(IOException ex){
+            } catch (IOException ex) {
                 ex.printStackTrace();
             }
         }
@@ -106,17 +109,18 @@ public class HttpUtil {
 
     /**
      * JSON形式Post请求
+     *
      * @param url
      * @param header
      * @param param
      * @return
      */
-    public static String doPostJSON(String url, Map<String,String> header, String param){
+    public static String doPostJSON(String url, Map<String, String> header, String param) {
         HttpPost httpPost = new HttpPost(url);
-        try{
-            setHeader(httpPost,header);
+        try {
+            setHeader(httpPost, header);
             /* 请求参数设置 */
-            if(param != null && StringUtils.isEmpty(param)){
+            if (param != null && !StringUtils.isEmpty(param)) {
                 httpPost.setEntity(new StringEntity(param));
             }
             CloseableHttpResponse response = httpClient.execute(httpPost);
@@ -127,7 +131,7 @@ public class HttpUtil {
             }
             HttpEntity entity = response.getEntity();
             String result = null;
-            if (entity != null){
+            if (entity != null) {
                 result = EntityUtils.toString(entity, CHARSET);
             }
             EntityUtils.consume(entity);
@@ -146,22 +150,23 @@ public class HttpUtil {
 
     /**
      * FORM请求
+     *
      * @param url
      * @param header
      * @param form
      * @return
      */
-    public static String doPostForm(String url, Map<String,String> header, Map<String,String> form){
+    public static String doPostForm(String url, Map<String, String> header, Map<String, String> form) {
         HttpPost httpPost = new HttpPost(url);
-        try{
-            setHeader(httpPost,header);
+        try {
+            setHeader(httpPost, header);
             /* 请求参数设置 */
-            if(form != null && StringUtils.isEmpty(form)){
-                List<BasicNameValuePair> pair =new ArrayList<BasicNameValuePair>();
+            if (form != null && StringUtils.isEmpty(form)) {
+                List<BasicNameValuePair> pair = new ArrayList<BasicNameValuePair>();
                 //我们遍历map 将数据转化为我们的表单数据
-                for (Map.Entry<String,String> entry:
+                for (Map.Entry<String, String> entry :
                         form.entrySet()) {
-                    pair.add(new BasicNameValuePair(entry.getKey(),entry.getValue()));
+                    pair.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
                 }
                 //httpPost 中放入经过url编码的表单参数
                 httpPost.setEntity(new UrlEncodedFormEntity(pair));
@@ -174,7 +179,7 @@ public class HttpUtil {
             }
             HttpEntity entity = response.getEntity();
             String result = null;
-            if (entity != null){
+            if (entity != null) {
                 result = EntityUtils.toString(entity, CHARSET);
             }
             EntityUtils.consume(entity);
@@ -192,15 +197,16 @@ public class HttpUtil {
 
     /**
      * FORM带文件请求
+     *
      * @param url
      * @param header
      * @param form
      * @return
      */
-    public static String doPostMultipart(String url, Map<String,String> header, Map<String,String> form, Map<String,String> formData){
+    public static String doPostMultipart(String url, Map<String, String> header, Map<String, String> form, Map<String, String> formData) {
         HttpPost httpPost = new HttpPost(url);
-        try{
-            setHeader(httpPost,header);
+        try {
+            setHeader(httpPost, header);
             CloseableHttpResponse response = httpClient.execute(httpPost);
             int statusCode = response.getStatusLine().getStatusCode();
             if (statusCode != 200) {
@@ -209,7 +215,7 @@ public class HttpUtil {
             }
             HttpEntity entity = response.getEntity();
             String result = null;
-            if (entity != null){
+            if (entity != null) {
                 result = EntityUtils.toString(entity, CHARSET);
             }
             EntityUtils.consume(entity);

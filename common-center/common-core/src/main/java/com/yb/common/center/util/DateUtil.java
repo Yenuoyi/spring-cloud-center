@@ -9,6 +9,7 @@ import java.util.Map;
 
 /**
  * 日期工具类
+ *
  * @author yebing
  */
 public class DateUtil {
@@ -22,39 +23,44 @@ public class DateUtil {
     public static final String HM = "HHmm";
     public static final String HM_COLON = "HH:mm";
     public static final String YMDHMS = "yyyyMMddHHmmss";
-    public static Map<String,SimpleDateFormat> simpleDateFormatMap = new HashMap<>(16);
+    public static Map<String, SimpleDateFormat> simpleDateFormatMap = new HashMap<>(16);
 
     /**
      * 获取指定格式SimpleDateFormat
+     *
      * @param pattern
      * @return
      */
     public static SimpleDateFormat getFormat(String pattern) {
         if (simpleDateFormatMap.get(pattern) == null) {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-            simpleDateFormatMap.put(pattern,simpleDateFormat);
+            simpleDateFormatMap.put(pattern, simpleDateFormat);
         }
         return simpleDateFormatMap.get(pattern);
-    };
+    }
+
+    ;
 
     /**
      * 获取指定格式的时间字符串
+     *
      * @param date
      * @param pattern
      * @return
      */
-    public static String getFormatString(Date date, String pattern){
+    public static String getFormatString(Date date, String pattern) {
         SimpleDateFormat format = getFormat(pattern);
         return format.format(date);
     }
 
     /**
      * 获取指定格式的日期
+     *
      * @param date
      * @param pattern
      * @return
      */
-    public static Date getFormatDate(String date,String pattern){
+    public static Date getFormatDate(String date, String pattern) {
         SimpleDateFormat format = getFormat(pattern);
         Date parse;
         try {

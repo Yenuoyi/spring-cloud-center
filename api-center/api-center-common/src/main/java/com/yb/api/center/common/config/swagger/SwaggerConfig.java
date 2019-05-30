@@ -18,7 +18,7 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
-                 /*选择那些路径和api会生成document*/
+                /*选择那些路径和api会生成document*/
                 .select()
                 /*对所有api进行监控*/
                 .apis(RequestHandlerSelectors.any())

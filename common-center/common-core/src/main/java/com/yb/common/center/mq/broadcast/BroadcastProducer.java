@@ -16,7 +16,7 @@ public class BroadcastProducer {
         DefaultMQProducer producer = new DefaultMQProducer("ProducerGroupName");
         producer.setNamesrvAddr("127.0.0.1:9876");
         producer.start();
-        for (int i = 0; i < 100; i++){
+        for (int i = 0; i < 100; i++) {
             Message msg = new Message("TopicTest",
                     "TagA",
                     "OrderID188",

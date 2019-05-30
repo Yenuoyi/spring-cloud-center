@@ -28,8 +28,8 @@ public class OrderedConsumer {
             @Override
             public ConsumeOrderlyStatus consumeMessage(List<MessageExt> msgs,
                                                        ConsumeOrderlyContext context) {
-                System.out.print(Thread.currentThread().getName() + " Receive New Messages: " );
-                for (MessageExt msg: msgs) {
+                System.out.print(Thread.currentThread().getName() + " Receive New Messages: ");
+                for (MessageExt msg : msgs) {
                     System.out.println(msg + ", content:" + new String(msg.getBody()));
                 }
                 try {

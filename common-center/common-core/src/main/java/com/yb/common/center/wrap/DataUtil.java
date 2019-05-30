@@ -5,7 +5,7 @@ import com.yb.common.center.Pager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class  DataUtil<T> {
+public class DataUtil<T> {
     List<T> list = new ArrayList<>();
     Pager pager = new Pager();
 

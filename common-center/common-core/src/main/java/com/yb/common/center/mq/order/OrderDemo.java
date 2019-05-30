@@ -4,10 +4,14 @@ package com.yb.common.center.mq.order;
  * @author yebing
  */
 public class OrderDemo {
-    /** 订单id */
+    /**
+     * 订单id
+     */
     private Long orderId;
 
-    /** 订单操作 */
+    /**
+     * 订单操作
+     */
     private String desc;
 
     public Long getOrderId() {
