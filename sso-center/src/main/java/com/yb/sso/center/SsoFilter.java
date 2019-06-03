@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -22,7 +23,7 @@ import java.util.Map;
  * 子系统使用过滤器
  * @author yebing
  */
-public abstract class SsoFilter {
+public abstract class SsoFilter implements Filter {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     @Value("SSO_CHECK_LOGIN_URL")
     private String SSO_CHECK_LOGIN_URL;
@@ -46,18 +47,20 @@ public abstract class SsoFilter {
         return isLogin;
     }
 
-    /**
-     * 系统已经登录后具体实现具体实现
-     * @param request
-     * @param response
-     */
-    public Wrapper isLoginAfter(HttpServletRequest request, HttpServletResponse response){
-        return WrapMapper.ok().result("Login success");
 
+    /**
+     * 当前系统已经登录后默认实现转发过滤链路
+     * @param var1
+     * @param var2
+     * @param var3
+     */
+    public void isLoginAfter(ServletRequest var1, ServletResponse var2, FilterChain var3) throws IOException, ServletException{
+        var3.doFilter(var1,var2);
     }
 
+
     /**
-     * 系统登录单点登录成功后具体实现具体实现
+     * 系统登录单点登录成功后具体实现
      * @param request
      * @param response
      */
@@ -68,7 +71,7 @@ public abstract class SsoFilter {
     }
 
     /**
-     * 系统登录单点登录失败后具体实现具体实现
+     * 系统登录单点登录失败后具体实现
      * @param request
      * @param response
      */
@@ -78,18 +81,20 @@ public abstract class SsoFilter {
 
     /**
      * 子系统过滤器
-     * @param request
-     * @param response
+     * @param var1
+     * @param var2
+     * @param var3
      * @return
      * @throws IOException
      */
-    public Wrapper filter(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        HttpSession session = request.getSession();
+    public void filter(ServletRequest var1, ServletResponse var2, FilterChain var3) throws IOException, ServletException {
+        HttpServletRequest request = (HttpServletRequest)var1;
+        HttpServletResponse response = (HttpServletResponse)var2;
         StringBuffer url = request.getRequestURL();
         boolean isLogin = currentIsLogin(request, response);
-        /* 判断当前系统是否已经登录，已登录不在进行校验 */
+        /* 判断当前系统是否已经登录，已登录不再进行校验，发送至下一过滤链 */
         if(isLogin == true){
-            isLoginAfter(request,response);
+            isLoginAfter(var1,var2,var3);
         }
 
         /* 判断是否携带token，携带token则请求认证中心认证token */
@@ -109,7 +114,16 @@ public abstract class SsoFilter {
         if(isLogin == false  && token == null){
             response.sendRedirect(SSO_CHECK_LOGIN_URL+"?redirect="+url);
         }
-        return WrapMapper.ok().result("Login success");
     }
 
+    /**
+     * 过滤链
+     * @param var1
+     * @param var2
+     * @param var3
+     */
+    @Override
+    public void doFilter(ServletRequest var1, ServletResponse var2, FilterChain var3) throws IOException, ServletException{
+        filter(var1,var2,var3);
+    }
 }
