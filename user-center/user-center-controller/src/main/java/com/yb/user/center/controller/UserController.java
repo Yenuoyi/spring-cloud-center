@@ -1,6 +1,6 @@
 package com.yb.user.center.controller;
 
-import com.yb.common.center.basicmethod.BasicController;
+import com.yb.common.center.basic.method.BasicController;
 import com.yb.common.center.wrap.ExecuteResult;
 import com.yb.common.center.wrap.WrapMapper;
 import com.yb.common.center.wrap.Wrapper;
