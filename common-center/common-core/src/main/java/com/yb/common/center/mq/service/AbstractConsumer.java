@@ -10,7 +10,7 @@ import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 /**
  * @author yebing
  */
-public abstract class AbstractConsumer{
+public abstract class AbstractConsumer {
     protected String namesrvAddr;
     protected ConsumeFromWhere consumeFromWhere = ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET;
     protected MessageModel messageModel;
@@ -23,6 +23,7 @@ public abstract class AbstractConsumer{
     protected MessageListenerConcurrently listenerConcurrently;
     protected MessageListenerOrderly listenerOrderly;
     protected DefaultMQPushConsumer mqConsumer = new DefaultMQPushConsumer();
+
     public void start() throws MQClientException {
         mqConsumer.start();
     }
