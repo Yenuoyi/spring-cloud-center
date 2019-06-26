@@ -3,6 +3,9 @@ package com.yb.common.center.aop;
 
 import java.lang.annotation.*;
 
+/**
+ * 切面测试方法
+ */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.PACKAGE, ElementType.TYPE, ElementType.METHOD, ElementType.FIELD})
