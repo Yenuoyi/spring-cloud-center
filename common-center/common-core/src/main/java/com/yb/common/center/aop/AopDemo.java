@@ -5,7 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- * @author yebing
+ * @author by yebing
  */
 @AopAnnotation(name = "class name")
 public class AopDemo {
