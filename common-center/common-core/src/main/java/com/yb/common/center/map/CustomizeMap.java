@@ -1,6 +1,6 @@
 package com.yb.common.center.map;
 
-public interface CustomizeMap<K,V> {
+public interface CustomizeMap<K, V> {
     K getKey(K k);
 
     V getValue(K k);
@@ -10,7 +10,8 @@ public interface CustomizeMap<K,V> {
     V remove(K k);
 
     int hash(K k);
-    interface Entry<K,V>{
+
+    interface Entry<K, V> {
         K getKey(K k);
 
         V getValue(K k);

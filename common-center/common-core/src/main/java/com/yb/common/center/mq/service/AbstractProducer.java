@@ -24,7 +24,7 @@ public abstract class AbstractProducer {
     protected boolean retryAnotherBrokerWhenNotStoreOK;
     protected int maxMessageSize;
 
-    public AbstractProducer(){
+    public AbstractProducer() {
         this.createTopicKey = "TBW102";
         this.defaultTopicQueueNums = 4;
         this.sendMsgTimeout = 3000;
@@ -39,7 +39,7 @@ public abstract class AbstractProducer {
         defaultMQProducer.start();
     }
 
-    public void shutdown(){
+    public void shutdown() {
         defaultMQProducer.shutdown();
     }
 
@@ -133,6 +133,7 @@ public abstract class AbstractProducer {
 
     /**
      * 发送mq消息
+     *
      * @param msg
      * @return
      * @throws InterruptedException

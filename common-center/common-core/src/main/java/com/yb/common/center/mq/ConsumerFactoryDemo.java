@@ -16,9 +16,9 @@ import java.util.List;
  * @author yebing
  */
 @Configuration
-public class ConsumerFactoryDemo{
+public class ConsumerFactoryDemo {
     @Bean
-    public ConsumerClient createTest(){
+    public ConsumerClient createTest() {
         ConsumerClient consumerClient = new ConsumerClient();
         consumerClient.setConsumerGroup("consumer");
         consumerClient.setNamesrvAddr("127.0.0.1:9876");

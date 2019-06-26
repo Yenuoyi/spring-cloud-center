@@ -8,12 +8,14 @@ import java.util.List;
 
 /**
  * service基础增删查改
- * @author yebing
+ *
  * @param <T>
+ * @author yebing
  */
-public interface BasicService<T extends BasicDTO,D extends BasicDao<T>> {
+public interface BasicService<T extends BasicDTO, D extends BasicDao<T>> {
     /**
      * 根据主键删除实体
+     *
      * @param id
      * @return
      */
@@ -21,6 +23,7 @@ public interface BasicService<T extends BasicDTO,D extends BasicDao<T>> {
 
     /**
      * 插入实体
+     *
      * @param record
      * @return
      */
@@ -28,6 +31,7 @@ public interface BasicService<T extends BasicDTO,D extends BasicDao<T>> {
 
     /**
      * 可选参数插入实体
+     *
      * @param record
      * @return
      */
@@ -35,6 +39,7 @@ public interface BasicService<T extends BasicDTO,D extends BasicDao<T>> {
 
     /**
      * 批量插入实体
+     *
      * @param records
      * @return
      */
@@ -42,6 +47,7 @@ public interface BasicService<T extends BasicDTO,D extends BasicDao<T>> {
 
     /**
      * 根据主键查询
+     *
      * @param id
      * @return
      */
@@ -49,6 +55,7 @@ public interface BasicService<T extends BasicDTO,D extends BasicDao<T>> {
 
     /**
      * 根据参数查询列表
+     *
      * @param record
      * @param pager
      * @return
@@ -57,6 +64,7 @@ public interface BasicService<T extends BasicDTO,D extends BasicDao<T>> {
 
     /**
      * 根据主键更新实体指定参数
+     *
      * @param record
      * @return
      */
@@ -64,6 +72,7 @@ public interface BasicService<T extends BasicDTO,D extends BasicDao<T>> {
 
     /**
      * 根据主键更新实体
+     *
      * @param record
      * @return
      */
