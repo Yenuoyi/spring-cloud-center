@@ -63,7 +63,7 @@ public class AopDemo {
         }
         System.out.println("class:"+className.name());
         System.out.println("name:"+declaredAnnotation.name());
-        System.out.println("method:"+method.name());
+        System.out.println("method_name:"+method.name());
 
     }
 }
