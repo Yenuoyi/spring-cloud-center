@@ -2,6 +2,7 @@ package com.yb.config.center.service.usercenter;
 
 import com.yb.config.center.common.Pager;
 import com.yb.config.center.export.UserDTO;
+
 import java.util.List;
 
 /**
@@ -10,6 +11,7 @@ import java.util.List;
 public interface UserService {
     /**
      * 通用根据主键删除实体
+     *
      * @param id
      * @return
      */
@@ -17,6 +19,7 @@ public interface UserService {
 
     /**
      * 插入实体
+     *
      * @param record
      * @return
      */
@@ -24,6 +27,7 @@ public interface UserService {
 
     /**
      * 插入实体可选
+     *
      * @param record
      * @return
      */
@@ -31,6 +35,7 @@ public interface UserService {
 
     /**
      * 根据主键查询
+     *
      * @param id
      * @return
      */
@@ -38,6 +43,7 @@ public interface UserService {
 
     /**
      * 根据主键可选择参数更新
+     *
      * @param record
      * @return
      */
@@ -45,6 +51,7 @@ public interface UserService {
 
     /**
      * 根据主键更新实体
+     *
      * @param record
      * @return
      */
@@ -52,6 +59,7 @@ public interface UserService {
 
     /**
      * 可选参数查询
+     *
      * @param record
      * @param pager
      * @return

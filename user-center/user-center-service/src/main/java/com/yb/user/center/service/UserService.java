@@ -7,6 +7,6 @@ import com.yb.user.center.export.UserDTO;
 /**
  * @author yebing
  */
-public interface UserService extends BasicService<UserDTO,UserDao> {
+public interface UserService extends BasicService<UserDTO, UserDao> {
     UserDTO selectOne();
 }

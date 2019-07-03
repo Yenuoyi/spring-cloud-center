@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bjucloud.marketcenter.dao.PromotionVoucherInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.bjucloud.marketcenter.export.PromotionVoucherInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="voucher_type_code" property="voucherTypeCode" jdbcType="VARCHAR" />
+    <result column="voucher_type_name" property="voucherTypeName" jdbcType="VARCHAR" />
+    <result column="card_prefix" property="cardPrefix" jdbcType="VARCHAR" />
+    <result column="voucher_number_length" property="voucherNumberLength" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="generated_quantity" property="generatedQuantity" jdbcType="INTEGER" />
+    <result column="generation_type" property="generationType" jdbcType="INTEGER" />
+    <result column="activity_start_time" property="activityStartTime" jdbcType="TIMESTAMP" />
+    <result column="activity_end_time" property="activityEndTime" jdbcType="TIMESTAMP" />
+    <result column="valid_time_type" property="validTimeType" jdbcType="INTEGER" />
+    <result column="period" property="period" jdbcType="INTEGER" />
+    <result column="use_start_time" property="useStartTime" jdbcType="TIMESTAMP" />
+    <result column="use_end_time" property="useEndTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_id" property="createId" jdbcType="BIGINT" />
+    <result column="create_name" property="createName" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="participate_platform" property="participatePlatform" jdbcType="VARCHAR" />
+    <result column="publish_system" property="publishSystem" jdbcType="INTEGER" />
+    <result column="publisher_id" property="publisherId" jdbcType="BIGINT" />
+    <result column="publisher_code" property="publisherCode" jdbcType="VARCHAR" />
+    <result column="publisher_name" property="publisherName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, voucher_type_code, voucher_type_name, card_prefix, voucher_number_length, status, 
+    generated_quantity, generation_type, activity_start_time, activity_end_time, valid_time_type, 
+    period, use_start_time, use_end_time, create_time, create_id, create_name, remark, 
+    participate_platform, publish_system, publisher_id, publisher_code, publisher_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from promotion_voucher_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from promotion_voucher_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bjucloud.marketcenter.export.PromotionVoucherInfo" >
+    insert into promotion_voucher_info (id, voucher_type_code, voucher_type_name, 
+      card_prefix, voucher_number_length, status, 
+      generated_quantity, generation_type, activity_start_time, 
+      activity_end_time, valid_time_type, period, 
+      use_start_time, use_end_time, create_time, 
+      create_id, create_name, remark, 
+      participate_platform, publish_system, publisher_id, 
+      publisher_code, publisher_name)
+    values (#{id,jdbcType=BIGINT}, #{voucherTypeCode,jdbcType=VARCHAR}, #{voucherTypeName,jdbcType=VARCHAR}, 
+      #{cardPrefix,jdbcType=VARCHAR}, #{voucherNumberLength,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{generatedQuantity,jdbcType=INTEGER}, #{generationType,jdbcType=INTEGER}, #{activityStartTime,jdbcType=TIMESTAMP}, 
+      #{activityEndTime,jdbcType=TIMESTAMP}, #{validTimeType,jdbcType=INTEGER}, #{period,jdbcType=INTEGER}, 
+      #{useStartTime,jdbcType=TIMESTAMP}, #{useEndTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createId,jdbcType=BIGINT}, #{createName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{participatePlatform,jdbcType=VARCHAR}, #{publishSystem,jdbcType=INTEGER}, #{publisherId,jdbcType=BIGINT}, 
+      #{publisherCode,jdbcType=VARCHAR}, #{publisherName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bjucloud.marketcenter.export.PromotionVoucherInfo" >
+    insert into promotion_voucher_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="voucherTypeCode != null" >
+        voucher_type_code,
+      </if>
+      <if test="voucherTypeName != null" >
+        voucher_type_name,
+      </if>
+      <if test="cardPrefix != null" >
+        card_prefix,
+      </if>
+      <if test="voucherNumberLength != null" >
+        voucher_number_length,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="generatedQuantity != null" >
+        generated_quantity,
+      </if>
+      <if test="generationType != null" >
+        generation_type,
+      </if>
+      <if test="activityStartTime != null" >
+        activity_start_time,
+      </if>
+      <if test="activityEndTime != null" >
+        activity_end_time,
+      </if>
+      <if test="validTimeType != null" >
+        valid_time_type,
+      </if>
+      <if test="period != null" >
+        period,
+      </if>
+      <if test="useStartTime != null" >
+        use_start_time,
+      </if>
+      <if test="useEndTime != null" >
+        use_end_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createId != null" >
+        create_id,
+      </if>
+      <if test="createName != null" >
+        create_name,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="participatePlatform != null" >
+        participate_platform,
+      </if>
+      <if test="publishSystem != null" >
+        publish_system,
+      </if>
+      <if test="publisherId != null" >
+        publisher_id,
+      </if>
+      <if test="publisherCode != null" >
+        publisher_code,
+      </if>
+      <if test="publisherName != null" >
+        publisher_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="voucherTypeCode != null" >
+        #{voucherTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="voucherTypeName != null" >
+        #{voucherTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardPrefix != null" >
+        #{cardPrefix,jdbcType=VARCHAR},
+      </if>
+      <if test="voucherNumberLength != null" >
+        #{voucherNumberLength,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="generatedQuantity != null" >
+        #{generatedQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="generationType != null" >
+        #{generationType,jdbcType=INTEGER},
+      </if>
+      <if test="activityStartTime != null" >
+        #{activityStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activityEndTime != null" >
+        #{activityEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validTimeType != null" >
+        #{validTimeType,jdbcType=INTEGER},
+      </if>
+      <if test="period != null" >
+        #{period,jdbcType=INTEGER},
+      </if>
+      <if test="useStartTime != null" >
+        #{useStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useEndTime != null" >
+        #{useEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null" >
+        #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="createName != null" >
+        #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="participatePlatform != null" >
+        #{participatePlatform,jdbcType=VARCHAR},
+      </if>
+      <if test="publishSystem != null" >
+        #{publishSystem,jdbcType=INTEGER},
+      </if>
+      <if test="publisherId != null" >
+        #{publisherId,jdbcType=BIGINT},
+      </if>
+      <if test="publisherCode != null" >
+        #{publisherCode,jdbcType=VARCHAR},
+      </if>
+      <if test="publisherName != null" >
+        #{publisherName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bjucloud.marketcenter.export.PromotionVoucherInfo" >
+    update promotion_voucher_info
+    <set >
+      <if test="voucherTypeCode != null" >
+        voucher_type_code = #{voucherTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="voucherTypeName != null" >
+        voucher_type_name = #{voucherTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardPrefix != null" >
+        card_prefix = #{cardPrefix,jdbcType=VARCHAR},
+      </if>
+      <if test="voucherNumberLength != null" >
+        voucher_number_length = #{voucherNumberLength,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="generatedQuantity != null" >
+        generated_quantity = #{generatedQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="generationType != null" >
+        generation_type = #{generationType,jdbcType=INTEGER},
+      </if>
+      <if test="activityStartTime != null" >
+        activity_start_time = #{activityStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activityEndTime != null" >
+        activity_end_time = #{activityEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validTimeType != null" >
+        valid_time_type = #{validTimeType,jdbcType=INTEGER},
+      </if>
+      <if test="period != null" >
+        period = #{period,jdbcType=INTEGER},
+      </if>
+      <if test="useStartTime != null" >
+        use_start_time = #{useStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useEndTime != null" >
+        use_end_time = #{useEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null" >
+        create_id = #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="createName != null" >
+        create_name = #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="participatePlatform != null" >
+        participate_platform = #{participatePlatform,jdbcType=VARCHAR},
+      </if>
+      <if test="publishSystem != null" >
+        publish_system = #{publishSystem,jdbcType=INTEGER},
+      </if>
+      <if test="publisherId != null" >
+        publisher_id = #{publisherId,jdbcType=BIGINT},
+      </if>
+      <if test="publisherCode != null" >
+        publisher_code = #{publisherCode,jdbcType=VARCHAR},
+      </if>
+      <if test="publisherName != null" >
+        publisher_name = #{publisherName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bjucloud.marketcenter.export.PromotionVoucherInfo" >
+    update promotion_voucher_info
+    set voucher_type_code = #{voucherTypeCode,jdbcType=VARCHAR},
+      voucher_type_name = #{voucherTypeName,jdbcType=VARCHAR},
+      card_prefix = #{cardPrefix,jdbcType=VARCHAR},
+      voucher_number_length = #{voucherNumberLength,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      generated_quantity = #{generatedQuantity,jdbcType=INTEGER},
+      generation_type = #{generationType,jdbcType=INTEGER},
+      activity_start_time = #{activityStartTime,jdbcType=TIMESTAMP},
+      activity_end_time = #{activityEndTime,jdbcType=TIMESTAMP},
+      valid_time_type = #{validTimeType,jdbcType=INTEGER},
+      period = #{period,jdbcType=INTEGER},
+      use_start_time = #{useStartTime,jdbcType=TIMESTAMP},
+      use_end_time = #{useEndTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_id = #{createId,jdbcType=BIGINT},
+      create_name = #{createName,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      participate_platform = #{participatePlatform,jdbcType=VARCHAR},
+      publish_system = #{publishSystem,jdbcType=INTEGER},
+      publisher_id = #{publisherId,jdbcType=BIGINT},
+      publisher_code = #{publisherCode,jdbcType=VARCHAR},
+      publisher_name = #{publisherName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

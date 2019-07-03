@@ -16,31 +16,38 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author yebing
  */
 @RestController
 @RequestMapping("/user")
-public class UserController extends BasicController<UserDTO,UserService> {
+public class UserController extends BasicController<UserDTO, UserService> {
     @Autowired
-    private RedisTemplate<String,String> redisTemplate;
+    private RedisTemplate<String, String> redisTemplate;
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
     /**
      * 添加新方法测试
+     *
      * @param id
      * @return
      */
-    @GetMapping(value = "/selectOne",produces = "application/json")
-    public Wrapper<?> selectKey(@RequestParam Long id){
+    @GetMapping(value = "/selectOne", produces = "application/json")
+    public Wrapper<?> selectKey(@RequestParam Long id, HttpServletRequest request, HttpServletResponse response) {
+        Cookie cookie = new Cookie("name","yebing");
+        response.addCookie(cookie);
         UserDTO userDTO = basicService.selectOne();
         return WrapMapper.ok().result(userDTO);
     }
 
-    @GetMapping(value = "/setRedis",produces = "application/json")
-    public Wrapper<?> setRedis(@RequestParam Long id){
-        redisTemplate.opsForValue().set("yebing","1440121130");
+    @GetMapping(value = "/setRedis", produces = "application/json")
+    public Wrapper<?> setRedis(@RequestParam Long id) {
+        redisTemplate.opsForValue().set("yebing", "1440121130");
         return WrapMapper.error().result("ok");
     }
 

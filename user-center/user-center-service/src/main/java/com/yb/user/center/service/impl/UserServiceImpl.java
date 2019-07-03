@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  * @author yebing
  */
 @Service("userService")
-public class UserServiceImpl extends BasicServiceImpl<UserDTO, UserDao> implements UserService{
+public class UserServiceImpl extends BasicServiceImpl<UserDTO, UserDao> implements UserService {
     @Override
     @AopAnnotation
     public UserDTO selectOne() {

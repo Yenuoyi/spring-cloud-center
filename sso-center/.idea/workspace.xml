@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="96d17aee-81f8-417b-b805-9018803fc2f5" name="Default Changelist" comment="完善单点登录中心">
+      <change afterPath="$PROJECT_DIR$/../market-center/market-center-dao/src/main/java/com/yb/market/center/dao/PromotionVoucherInfoDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../market-center/market-center-dao/src/main/resources/mybatis/mapper/PromotionVoucherInfoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../market-center/market-center-export/src/main/java/com/yb/market/center/export/PromotionVoucherInfoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sso-center-simple/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sso-center-simple/src/main/java/com/yb/sso/center/SsoCenterApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sso-center-simple/src/main/java/com/yb/sso/center/config/CookiesConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sso-center-simple/src/main/java/com/yb/sso/center/config/FilterRegistrationConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sso-center-simple/src/main/java/com/yb/sso/center/config/WebSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sso-center-simple/src/main/java/com/yb/sso/center/controller/TokenLoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sso-center-simple/src/main/java/com/yb/sso/center/controller/WebLoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sso-center-simple/src/main/java/com/yb/sso/center/domain/LoginDomain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sso-center-simple/src/main/java/com/yb/sso/center/filter/TokenSsoFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sso-center-simple/src/main/java/com/yb/sso/center/filter/WebSsoFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sso-center-simple/src/main/java/com/yb/sso/center/util/MyCookieSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sso-center-simple/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sso-center-simple/src/test/java/com/yb/sso/center/SsoCenterApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-center/user-center-controller/src/test/java/com/yb/user/center/controller/InsertTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-center/user-center-dao/src/main/java/com/yb/user/center/dao/PromotionVoucherInfoDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-center/user-center-dao/src/main/resources/mybatis/mapper/PromotionVoucherInfoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-center/user-center-export/src/main/java/com/yb/user/center/export/PromotionVoucherInfoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-center/api-center-common/src/main/java/com/yb/api/center/common/DataUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../api-center/api-center-common/src/main/java/com/yb/api/center/common/DataUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-center/api-center-common/src/main/java/com/yb/api/center/common/WrapMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../api-center/api-center-common/src/main/java/com/yb/api/center/common/WrapMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-center/api-center-common/src/main/java/com/yb/api/center/common/encrypt/Md5Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/../api-center/api-center-common/src/main/java/com/yb/api/center/common/encrypt/Md5Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-center/api-center-dao/src/main/resources/mybatis/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../api-center/api-center-dao/src/main/resources/mybatis/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-center/api-center-service/src/main/java/com/yb/api/center/service/usercenter/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../api-center/api-center-service/src/main/java/com/yb/api/center/service/usercenter/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config-center/config-center-controller/src/main/java/com/yb/config/center/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../config-center/config-center-controller/src/main/java/com/yb/config/center/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config-center/config-center-controller/src/main/resources/application-prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../config-center/config-center-controller/src/main/resources/application-prod.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config-center/config-center-controller/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../config-center/config-center-controller/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config-center/config-center-dao/src/main/java/com/yb/config/center/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../config-center/config-center-dao/src/main/java/com/yb/config/center/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config-center/config-center-service/src/main/java/com/yb/config/center/service/usercenter/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../config-center/config-center-service/src/main/java/com/yb/config/center/service/usercenter/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config-center/config-center-service/src/main/java/com/yb/config/center/service/usercenter/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../config-center/config-center-service/src/main/java/com/yb/config/center/service/usercenter/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server-center/server-center-common/src/main/java/com/yb/server/center/common/Pager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server-center/server-center-common/src/main/java/com/yb/server/center/common/Pager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server-center/server-center-controller/src/main/java/com/yb/server/center/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server-center/server-center-controller/src/main/java/com/yb/server/center/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server-center/server-center-service/src/main/java/com/yb/server/center/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server-center/server-center-service/src/main/java/com/yb/server/center/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server-center/server-cloud/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server-center/server-cloud/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server-center/server-cloud/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yb/sso/center/LoginDomain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yb/sso/center/SsoCenterApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yb/sso/center/WebLoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yb/sso/center/filter/SsoFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yb/sso/center/SsoCenterApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-center/user-center-controller/src/main/java/com/yb/user/center/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-center/user-center-controller/src/main/java/com/yb/user/center/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-center/user-center-controller/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../user-center/user-center-controller/src/main/resources/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-center/user-center-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-center/user-center-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-center/user-center-service/src/main/java/com/yb/user/center/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-center/user-center-service/src/main/java/com/yb/user/center/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-center/user-center-service/src/main/java/com/yb/user/center/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-center/user-center-service/src/main/java/com/yb/user/center/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zuul-center/zuul-center-controller/src/main/java/com/yb/zuul/center/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../zuul-center/zuul-center-controller/src/main/java/com/yb/zuul/center/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zuul-center/zuul-center-dao/src/main/java/com/yb/zuul/center/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../zuul-center/zuul-center-dao/src/main/java/com/yb/zuul/center/dao/UserDao.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path=".idea/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1062717012">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.1" value="2" />
+          <entry key="project.open.time.2" value="2" />
+          <entry key="project.opened" value="5" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="15" />
+          <entry key="java" value="939" />
+          <entry key="properties" value="72" />
+          <entry key="txt" value="13" />
+          <entry key="xml" value="168" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="939" />
+          <entry key="PLAIN_TEXT" value="28" />
+          <entry key="Properties" value="72" />
+          <entry key="XML" value="168" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="class" value="15" />
+          <entry key="java" value="23" />
+          <entry key="pom" value="4" />
+          <entry key="properties" value="4" />
+          <entry key="xml" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="15" />
+          <entry key="JAVA" value="23" />
+          <entry key="Properties" value="4" />
+          <entry key="XML" value="7" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>security</find>
+      <find>se</find>
+      <find>sec</find>
+      <find>spring-session</find>
+      <find>JSESSIONID</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+      <replace>SESSION</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/yb/sso/center/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yb/sso/center/TokenLoginController.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yb/sso/center/WebSecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yb/sso/center/SsoFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yb/sso/center/SsoCenterApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yb/sso/center/FilterRegistrationConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yb/sso/center/WebSsoFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yb/sso/center/RedisSessionConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yb/sso/center/config/FilterRegistrationConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yb/sso/center/filter/WebSsoFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yb/sso/center/WebLoginController.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:/Program Files/apache-maven-3.3.9" />
+        <option name="userSettingsFile" value="C:\Users\Administrator\.m2\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="sso-center" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="sso-center" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1940" />
+    <option name="height" value="1050" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="sso-center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sso-center" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sso-center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sso-center" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sso-center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sso-center" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sso-center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sso-center" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sso-center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sso-center" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="center" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sso-center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sso-center" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="center" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sso-center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sso-center" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="center" type="462c0819:PsiDirectoryNode" />
+              <item name="filter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sso-center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sso-center" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sso-center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="sso-center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.springframework.session:spring-session-data-redis:2.0.3.RELEASE" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="sso-center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.springframework.session:spring-session-data-redis:2.0.3.RELEASE" type="70bed36:NamedLibraryElementNode" />
+              <item name="spring-session-data-redis-2.0.3.RELEASE.jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sso-center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.springframework.session:spring-session-data-redis:2.0.3.RELEASE" type="70bed36:NamedLibraryElementNode" />
+              <item name="spring-session-data-redis-2.0.3.RELEASE.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="redis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sso-center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.springframework.session:spring-session-data-redis:2.0.3.RELEASE" type="70bed36:NamedLibraryElementNode" />
+              <item name="spring-session-data-redis-2.0.3.RELEASE.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="redis" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sso-center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.springframework.session:spring-session-data-redis:2.0.3.RELEASE" type="70bed36:NamedLibraryElementNode" />
+              <item name="spring-session-data-redis-2.0.3.RELEASE.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="redis" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="annotation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sso-center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.springframework.session:spring-session-data-redis:2.0.3.RELEASE" type="70bed36:NamedLibraryElementNode" />
+              <item name="spring-session-data-redis-2.0.3.RELEASE.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="redis" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="annotation" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sso-center" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.springframework.session:spring-session-data-redis:2.0.3.RELEASE" type="70bed36:NamedLibraryElementNode" />
+              <item name="spring-session-data-redis-2.0.3.RELEASE.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="redis" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="annotation" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="http" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562124987698" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sso-center-server" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.yb.sso.center" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\idea project\spring-cloud-center\sso-center\src\main\java\com\yb\sso\center\filter" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="SsoCenterApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="sso-center" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yb.sso.center.SsoCenterApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="96d17aee-81f8-417b-b805-9018803fc2f5" name="Default Changelist" comment="" />
+      <created>1559289958200</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1559289958200</updated>
+      <workItem from="1559289961557" duration="816000" />
+      <workItem from="1559541250607" duration="2789000" />
+      <workItem from="1562029830680" duration="807000" />
+      <workItem from="1562044685758" duration="14042000" />
+      <workItem from="1562113738586" duration="3793000" />
+    </task>
+    <task id="LOCAL-00001" summary="新增单点登录中心">
+      <created>1559290166209</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1559290166209</updated>
+    </task>
+    <task id="LOCAL-00002" summary="完善单点登录中心">
+      <created>1559543906556</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1559543906556</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="22247000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26541555" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32991204" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.15395895" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Java Enterprise" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.4340176" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.32991204" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" weight="0.43967828" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" weight="0.3297587" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26541555" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32991204" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.15395895" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Java Enterprise" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.4340176" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.32991204" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" weight="0.43967828" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" weight="0.3297587" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="新增单点登录中心" />
+    <MESSAGE value="完善单点登录中心" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善单点登录中心" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/9.0.19/tomcat-embed-core-9.0.19.jar!/javax/servlet/http/HttpServletResponse.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="13" column="60" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/9.0.19/tomcat-embed-core-9.0.19.jar!/javax/servlet/Filter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="13" column="8" selection-start-line="13" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yb/sso/center/LoginDomain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$MAVEN_REPOSITORY$/org/springframework/session/spring-session-data-redis/2.1.6.RELEASE/spring-session-data-redis-2.1.6.RELEASE.pom">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1738" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yb/sso/center/TokenLoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="27" column="50" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-starter-data-redis/2.0.3.RELEASE/spring-boot-starter-data-redis-2.0.3.RELEASE.pom">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="23" column="40" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$MAVEN_REPOSITORY$/org/springframework/session/spring-session-data-redis/2.0.3.RELEASE/spring-session-data-redis-2.0.3.RELEASE.pom">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="54" selection-start-line="54" selection-end-line="59" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/9.0.19/tomcat-embed-core-9.0.19.jar!/javax/servlet/ServletRequest.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/9.0.19/tomcat-embed-core-9.0.19.jar!/javax/servlet/http/HttpServletRequest.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="16" column="49" lean-forward="true" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/9.0.19/tomcat-embed-core-9.0.19.jar!/org/apache/catalina/core/ApplicationFilterChain.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="95" selection-start-line="95" selection-end-line="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.1.7.RELEASE/spring-web-5.1.7.RELEASE.jar!/org/springframework/web/filter/DelegatingFilterProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="162" selection-start-line="162" selection-end-line="162" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/9.0.19/tomcat-embed-core-9.0.19.jar!/javax/servlet/annotation/WebFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="22" lean-forward="true" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/session/spring-session-data-redis/2.0.3.RELEASE/spring-session-data-redis-2.0.3.RELEASE.jar!/org/springframework/session/data/redis/config/annotation/web/http/EnableRedisHttpSession.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yb/sso/center/RedisSessionConfig.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/session/spring-session-data-redis/2.0.3.RELEASE/spring-session-data-redis-2.0.3.RELEASE.jar!/org/springframework/session/data/redis/config/annotation/web/http/RedisHttpSessionConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="51" column="31" lean-forward="true" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yb/sso/center/WebLoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="33" column="42" lean-forward="true" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yb/sso/center/filter/WebSsoFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1034">
+          <caret line="63" column="56" lean-forward="true" selection-start-line="63" selection-start-column="56" selection-end-line="63" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yb/sso/center/config/FilterRegistrationConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yb/sso/center/SsoCenterApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yb/sso/center/filter/SsoFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="95" column="9" lean-forward="true" selection-start-line="95" selection-start-column="9" selection-end-line="95" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#3837#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yb/sso/center/config/WebSecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

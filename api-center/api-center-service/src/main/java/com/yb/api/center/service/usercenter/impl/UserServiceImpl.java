@@ -26,6 +26,7 @@ public class UserServiceImpl implements UserService {
     private String userCenter;
     @Autowired
     RestTemplate restTemplate;
+
     @Override
     public int deleteByPrimaryKey(Long id) {
         return 0;
@@ -44,9 +45,9 @@ public class UserServiceImpl implements UserService {
     @Override
     @HystrixCommand(fallbackMethod = "serviceError")
     public UserDTO selectByPrimaryKey(Long id) {
-        String forObject = restTemplate.getForObject("http://"+userCenter+"/user/selectByPrimaryKey", String.class);
-        logger.info("user-center返回结果：{}",forObject);
-        UserDTO userDTO = JSONObject.parseObject(forObject,UserDTO.class);
+        String forObject = restTemplate.getForObject("http://" + userCenter + "/user/selectByPrimaryKey", String.class);
+        logger.info("user-center返回结果：{}", forObject);
+        UserDTO userDTO = JSONObject.parseObject(forObject, UserDTO.class);
         return userDTO;
     }
 
@@ -67,11 +68,12 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 断路器，保持入参、返回参数类型与原方法一致
+     *
      * @param name
      * @return
      */
     public UserDTO serviceError(Long name) {
-        logger.info("hi,"+name+",sorry,error!");
+        logger.info("hi," + name + ",sorry,error!");
         UserDTO userDTO = new UserDTO();
         userDTO.setId(-1L);
         return userDTO;

@@ -12,6 +12,7 @@ import java.util.List;
 public interface UserDao {
     /**
      * 通用根据主键删除实体
+     *
      * @param id
      * @return
      */
@@ -19,6 +20,7 @@ public interface UserDao {
 
     /**
      * 插入实体
+     *
      * @param record
      * @return
      */
@@ -26,6 +28,7 @@ public interface UserDao {
 
     /**
      * 插入实体可选
+     *
      * @param record
      * @return
      */
@@ -33,6 +36,7 @@ public interface UserDao {
 
     /**
      * 根据主键查询
+     *
      * @param id
      * @return
      */
@@ -40,6 +44,7 @@ public interface UserDao {
 
     /**
      * 根据主键可选择参数更新
+     *
      * @param record
      * @return
      */
@@ -47,6 +52,7 @@ public interface UserDao {
 
     /**
      * 根据主键更新实体
+     *
      * @param record
      * @return
      */
@@ -54,6 +60,7 @@ public interface UserDao {
 
     /**
      * 可选参数查询
+     *
      * @param record
      * @param pager
      * @return
@@ -62,6 +69,7 @@ public interface UserDao {
 
     /**
      * 可选参数查询统计
+     *
      * @param record
      * @return
      */

@@ -5,9 +5,10 @@ import java.util.List;
 
 /**
  * 工具类
+ *
  * @author yebing
  */
-public class  DataUtil<T> {
+public class DataUtil<T> {
     List<T> list = new ArrayList<>();
     Pager pager = new Pager();
 

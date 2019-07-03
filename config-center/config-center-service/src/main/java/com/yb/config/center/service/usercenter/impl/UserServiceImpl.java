@@ -21,6 +21,7 @@ public class UserServiceImpl implements UserService {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     RestTemplate restTemplate;
+
     @Override
     public int deleteByPrimaryKey(Long id) {
         return 0;
@@ -41,7 +42,7 @@ public class UserServiceImpl implements UserService {
     public UserDTO selectByPrimaryKey(Long id) {
         String forObject = restTemplate.getForObject("http://user-center/user/selectByPrimaryKey", String.class);
         System.out.println(forObject);
-        UserDTO userDTO = JSONObject.parseObject(forObject,UserDTO.class);
+        UserDTO userDTO = JSONObject.parseObject(forObject, UserDTO.class);
         return userDTO;
     }
 
@@ -62,11 +63,12 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 保持入参、返回参数类型与原方法一致
+     *
      * @param name
      * @return
      */
     public UserDTO serviceError(Long name) {
-        logger.info("hi,"+name+",sorry,error!");
+        logger.info("hi," + name + ",sorry,error!");
         return null;
     }
 }
