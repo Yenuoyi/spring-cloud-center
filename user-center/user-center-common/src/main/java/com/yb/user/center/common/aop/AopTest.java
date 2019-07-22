@@ -6,6 +6,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.*;
@@ -74,5 +75,31 @@ public class AopTest {
             throwable.printStackTrace();
         }
         return proceed;
+    }
+
+    public static void main(String[] args) {
+        Tel tel = new Tel();
+        tel.start();
+        int[] is = {0,5,2,3,6,1,4,7,9,8};
+        for(int i=0;i<is.length;i++){
+            for (int j=i;j<is.length;j++){
+                if(is[i] < is[j]){
+                    int tmp = is[i];
+                    is[i] = is[j];
+                    is[j] = tmp;
+                }
+            }
+        }
+        for (int i : is) {
+            System.out.print(i +"   ");
+        }
+    }
+
+    public static class Tel extends Thread{
+        @Override
+        public void run() {
+            System.out.println("I am thread");
+            super.run();
+        }
     }
 }

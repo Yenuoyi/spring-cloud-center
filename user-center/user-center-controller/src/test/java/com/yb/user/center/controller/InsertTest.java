@@ -14,19 +14,26 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class InsertTest {
+    private static ThreadLocal<List> threadLocal = new ThreadLocal<>();
     @Resource
     private SqlSessionFactory sqlSessionFactory;
 
     @Test
     public void insert() throws InterruptedException {
-        List<PromotionVoucherInfoDTO> list = generatorProm();
-        List<List<PromotionVoucherInfoDTO>> lists = cutList(list, 3000);
+/*        List list = threadLocal.get();
+        System.out.println(list);
+        threadLocal.set(new LinkedList());
+        list = threadLocal.get();
+        System.out.println(list);*/
+        List<PromotionVoucherInfoDTO> list = generatorProm(10);
+        List<List<PromotionVoucherInfoDTO>> lists = cutList(list, 10);
         Long startTime = System.currentTimeMillis();
 
         ThreadPoolUtil instance = ThreadPoolUtil.getInstance();
@@ -40,9 +47,30 @@ public class InsertTest {
 
     }
 
-    public List<PromotionVoucherInfoDTO> generatorProm() {
+    public List<PromotionVoucherInfoDTO> generatorProm(int size) {
         List<PromotionVoucherInfoDTO> list = new ArrayList<>();
-        for (int i = 0; i < 30000; i++) {
+        for (int i = 0; i < size; i++) {
+            PromotionVoucherInfoDTO promotionVoucherInfoDTO = new PromotionVoucherInfoDTO();
+            promotionVoucherInfoDTO.setCardPrefix("A");
+            promotionVoucherInfoDTO.setCreateId(1L);
+            promotionVoucherInfoDTO.setCreateName("yebing");
+            promotionVoucherInfoDTO.setCreateCode("001");
+            promotionVoucherInfoDTO.setCreateTime(new Date());
+            promotionVoucherInfoDTO.setActivityStartTime(new Date());
+            promotionVoucherInfoDTO.setActivityEndTime(new Date());
+            promotionVoucherInfoDTO.setGenerationType(1);
+            promotionVoucherInfoDTO.setParticipatePlatform("O2O");
+            promotionVoucherInfoDTO.setPeriod(1);
+            promotionVoucherInfoDTO.setUseStartTime(new Date());
+            promotionVoucherInfoDTO.setUseEndTime(new Date());
+            list.add(promotionVoucherInfoDTO);
+        }
+        return list;
+    }
+
+    public List<PromotionVoucherInfoDTO> generatorProm(double size) {
+        List<PromotionVoucherInfoDTO> list = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
             PromotionVoucherInfoDTO promotionVoucherInfoDTO = new PromotionVoucherInfoDTO();
             promotionVoucherInfoDTO.setCardPrefix("A");
             promotionVoucherInfoDTO.setCreateId(1L);

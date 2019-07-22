@@ -9,14 +9,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @author yebing
  */
-@SpringBootApplication(scanBasePackages = {"com.yb.user"})
+@SpringBootApplication(scanBasePackages = {"com"})
 @MapperScan("com.yb.user.center.dao")
-
-@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy(exposeProxy=true)
+@EnableTransactionManagement
 public class UserCenterApplication {
 
     public static void main(String[] args) {
