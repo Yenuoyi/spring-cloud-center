@@ -26,7 +26,6 @@ public class AopTest {
     @Pointcut(value = "execution (* com.yb.user.center.service.impl..*.*(..)) || execution (* com.yb.common.center.basicmethod.*ServiceImpl.*(..))")
     public void aopPointCut() {
         System.out.println("进入pointcut！");
-
     }
 
     /**

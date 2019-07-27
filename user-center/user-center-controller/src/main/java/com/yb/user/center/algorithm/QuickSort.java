@@ -1,4 +1,4 @@
-package com.yb.user.center.aop;
+package com.yb.user.center.algorithm;
 
 /**
  * 快速排序
@@ -45,7 +45,7 @@ public class QuickSort {
 
     public static void main(String[] args){
         int[] array = {10,6,1,2,7,9,3,4,5,10,8};
-        QuickSort quick = new QuickSort();
+        /*QuickSort quick = new QuickSort();
         quick.quickSort(array, 0, array.length-1);
         for(int i=0;i<array.length;i++){
             System.out.print(array[i]+" ");
@@ -55,6 +55,7 @@ public class QuickSort {
         quick.quickSort(array2, 0, array2.length-1);
         for(int i=0;i<array2.length;i++){
             System.out.print(array2[i]+" ");
-        }
+        }*/
+
     }
 }

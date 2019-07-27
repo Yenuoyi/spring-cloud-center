@@ -27,11 +27,13 @@ public class Son extends Parent {
 
     public static void main(String[] args) {
         Son son = new Son();
-        son.setNameMethod();
+        son = new Son();
+        /*son.setNameMethod();
+        son.name();
         String[] strings = {};
         strings[0] = "1";
         strings[1] = "2";
-        System.out.println(strings);
+        System.out.println(strings);*/
 
     }
 }

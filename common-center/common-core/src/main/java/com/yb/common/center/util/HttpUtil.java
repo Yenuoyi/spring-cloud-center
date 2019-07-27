@@ -2,16 +2,13 @@ package com.yb.common.center.util;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.entity.EntityBuilder;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
@@ -52,6 +49,24 @@ public class HttpUtil {
             while (iterator.hasNext()) {
                 Map.Entry<String, String> next = iterator.next();
                 httpPost.addHeader(next.getKey(), next.getValue());
+            }
+        }
+    }
+
+    /**
+     * 设置请求头
+     *
+     * @param httpGet
+     * @param header
+     */
+    public static void setHeader(HttpGet httpGet, Map<String, String> header) {
+        /* start 请求头参数设置*/
+        if (header != null && header.size() != 0) {
+            Set<Map.Entry<String, String>> entries = header.entrySet();
+            Iterator<Map.Entry<String, String>> iterator = entries.iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<String, String> next = iterator.next();
+                httpGet.addHeader(next.getKey(), next.getValue());
             }
         }
     }
@@ -107,6 +122,33 @@ public class HttpUtil {
         return result;
     }
 
+    public static String doGet(String url, Map<String, String> header){
+        HttpGet httpGet = new HttpGet(url);
+        String result = null;
+        try {
+            setHeader(httpGet, header);
+            CloseableHttpResponse response = httpClient.execute(httpGet);
+            int statusCode = response.getStatusLine().getStatusCode();
+            if (statusCode != 200) {
+                httpGet.abort();
+                throw new RuntimeException("HttpClient,error status code :" + statusCode);
+            }
+            HttpEntity entity = response.getEntity();
+            if (entity != null) {
+                result = EntityUtils.toString(entity, CHARSET);
+            }
+            EntityUtils.consume(entity);
+            response.close();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if(httpGet != null){
+                httpGet.releaseConnection();
+            }
+        }
+        return result;
+    }
     /**
      * JSON形式Post请求
      *
@@ -117,11 +159,19 @@ public class HttpUtil {
      */
     public static String doPostJSON(String url, Map<String, String> header, String param) {
         HttpPost httpPost = new HttpPost(url);
+        if (header == null){
+            header = new HashMap<>();
+        }
+        header.put("Content-Type","application/json;charset=utf-8");
         try {
             setHeader(httpPost, header);
             /* 请求参数设置 */
             if (param != null && !StringUtils.isEmpty(param)) {
-                httpPost.setEntity(new StringEntity(param));
+                /*请求实体进行指定编码*/
+                StringEntity entity = new StringEntity(param, Charset.forName("UTF-8"));
+                entity.setContentEncoding("UTF-8");
+                entity.setContentType("application/json");
+                httpPost.setEntity(entity);
             }
             CloseableHttpResponse response = httpClient.execute(httpPost);
             int statusCode = response.getStatusLine().getStatusCode();
@@ -137,12 +187,12 @@ public class HttpUtil {
             EntityUtils.consume(entity);
             response.close();
             return result;
-        } catch (UnsupportedEncodingException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        }finally {
+            if(httpPost != null){
+                httpPost.releaseConnection();
+            }
         }
 
         return null;
@@ -158,6 +208,10 @@ public class HttpUtil {
      */
     public static String doPostForm(String url, Map<String, String> header, Map<String, String> form) {
         HttpPost httpPost = new HttpPost(url);
+        if (header == null){
+            header = new HashMap<>();
+        }
+        header.put("Content-Type","application/x-www-form-urlencoded");
         try {
             setHeader(httpPost, header);
             /* 请求参数设置 */
@@ -185,12 +239,12 @@ public class HttpUtil {
             EntityUtils.consume(entity);
             response.close();
             return result;
-        } catch (UnsupportedEncodingException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } finally {
+            if(httpPost != null){
+                httpPost.releaseConnection();
+            }
         }
         return null;
     }
@@ -205,6 +259,10 @@ public class HttpUtil {
      */
     public static String doPostMultipart(String url, Map<String, String> header, Map<String, String> form, Map<String, String> formData) {
         HttpPost httpPost = new HttpPost(url);
+        if (header == null){
+            header = new HashMap<>();
+        }
+        header.put("Content-Type","multipart/form-data");
         try {
             setHeader(httpPost, header);
             CloseableHttpResponse response = httpClient.execute(httpPost);
@@ -221,12 +279,12 @@ public class HttpUtil {
             EntityUtils.consume(entity);
             response.close();
             return result;
-        } catch (UnsupportedEncodingException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } finally {
+            if(httpPost != null){
+                httpPost.releaseConnection();
+            }
         }
         return null;
     }
