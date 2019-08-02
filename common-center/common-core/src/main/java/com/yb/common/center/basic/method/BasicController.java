@@ -16,82 +16,79 @@ import java.util.List;
  *
  * @author yebing
  */
-public class BasicController<T extends BasicDTO, S extends BasicService> {
+public class BasicController<S extends BasicService,E extends BasicDTO> {
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
-    protected S basicService;
-
-    @RequestMapping(value = "/deleteByPrimaryKey", method = {RequestMethod.POST})
-    public Wrapper<?> deleteByPrimaryKey(@RequestBody T record) {
-        ExecuteResult<Integer> executeResult = basicService.deleteByPrimaryKey(record.getId());
-        if (executeResult.isSuccess()) {
+    protected  S basicService;
+    @RequestMapping(value = "/deleteByPrimaryKey",method={RequestMethod.POST})
+    public Wrapper<?> deleteByPrimaryKey(@RequestBody E record){
+        ExecuteResult<Integer> executeResult = basicService.deleteByPrimaryKey(record);
+        if(executeResult.isSuccess()){
             return WrapMapper.ok().result(executeResult);
         }
         return WrapMapper.error().result(executeResult);
     }
 
-    @RequestMapping(value = "/insert", method = {RequestMethod.POST})
-    public Wrapper<?> insert(@RequestBody T record) {
+    @RequestMapping(value = "/insert",method={RequestMethod.POST})
+    public Wrapper<?> insert(@RequestBody E record){
         ExecuteResult<Integer> executeResult = basicService.insert(record);
-        if (executeResult.isSuccess()) {
+        if(executeResult.isSuccess()){
             return WrapMapper.ok().result(executeResult);
         }
         return WrapMapper.error().result(executeResult);
     }
 
-    @RequestMapping(value = "/insertSelective", method = {RequestMethod.POST})
-    public Wrapper<?> insertSelective(@RequestBody T record) {
+    @RequestMapping(value = "/insertSelective",method={RequestMethod.POST})
+    public Wrapper<?> insertSelective(@RequestBody E record){
         ExecuteResult<Integer> executeResult = basicService.insertSelective(record);
-        if (executeResult.isSuccess()) {
+        if(executeResult.isSuccess()){
             return WrapMapper.ok().result(executeResult);
         }
         return WrapMapper.error().result(executeResult);
     }
 
-    @RequestMapping(value = "/batchSave", method = {RequestMethod.POST})
-    public Wrapper<?> insertSelective(@RequestBody List<T> record) {
+    @RequestMapping(value = "/batchSave",method={RequestMethod.POST})
+    public Wrapper<?> insertSelective(@RequestBody List<E> record){
         ExecuteResult<Integer> executeResult = basicService.batchSave(record);
-        if (executeResult.isSuccess()) {
+        if(executeResult.isSuccess()){
             return WrapMapper.ok().result(executeResult);
         }
         return WrapMapper.error().result(executeResult);
     }
 
-    @GetMapping(value = "/selectByPrimaryKey", produces = "application/json")
-    public Wrapper<?> selectByPrimaryKey(@RequestParam Long id) {
-        ExecuteResult<T> executeResult = basicService.selectByPrimaryKey(id);
-        if (executeResult.isSuccess()) {
+    @RequestMapping(value = "/selectByPrimaryKey",method={RequestMethod.POST})
+    public Wrapper<?> selectByPrimaryKey(@RequestBody E record){
+        ExecuteResult<E> executeResult = basicService.selectByPrimaryKey(record);
+        if(executeResult.isSuccess()){
             return WrapMapper.ok().result(executeResult);
         }
         return WrapMapper.error().result(executeResult);
     }
 
-    @RequestMapping(value = "/selectList", method = {RequestMethod.POST})
-    public Wrapper<?> selectList(@RequestBody T record) {
-        ExecuteResult<DataUtil<T>> executeResult = basicService.selectList(record, record.getPager());
-        if (executeResult.isSuccess()) {
+    @RequestMapping(value = "/selectList",method={RequestMethod.POST})
+    public Wrapper<?> selectList(@RequestBody E record){
+        ExecuteResult<DataUtil<E>> executeResult = basicService.selectList(record,record.getPager());
+        if(executeResult.isSuccess()){
             return WrapMapper.ok().result(executeResult);
         }
         return WrapMapper.error().result(executeResult);
     }
 
-    @RequestMapping(value = "/updateByPrimaryKeySelective", method = {RequestMethod.POST})
-    public Wrapper<?> updateByPrimaryKeySelective(@RequestBody T record) {
+    @RequestMapping(value = "/updateByPrimaryKeySelective",method={RequestMethod.POST})
+    public Wrapper<?> updateByPrimaryKeySelective(@RequestBody E record){
         ExecuteResult<Integer> executeResult = basicService.updateByPrimaryKeySelective(record);
-        if (executeResult.isSuccess()) {
+        if(executeResult.isSuccess()){
             return WrapMapper.ok().result(executeResult);
         }
         return WrapMapper.error().result(executeResult);
     }
 
-    @RequestMapping(value = "/updateByPrimaryKey", method = {RequestMethod.POST})
-    public Wrapper<?> updateByPrimaryKey(@RequestBody T record) {
+    @RequestMapping(value = "/updateByPrimaryKey",method={RequestMethod.POST})
+    public Wrapper<?> updateByPrimaryKey(@RequestBody E record){
         ExecuteResult<Integer> executeResult = basicService.updateByPrimaryKey(record);
-        if (executeResult.isSuccess()) {
+        if(executeResult.isSuccess()){
             return WrapMapper.ok().result(executeResult);
         }
         return WrapMapper.error().result(executeResult);
     }
-
-
 }

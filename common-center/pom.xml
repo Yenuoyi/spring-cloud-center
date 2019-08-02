@@ -143,6 +143,14 @@
                 <version>4.3.2</version>
             </dependency>
             <!-- end Rocket MQ -->
+            <!-- start 日志 -->
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.17</version>
+            </dependency>
+            <!-- end 日志 -->
+
         </dependencies>
     </dependencyManagement>
 

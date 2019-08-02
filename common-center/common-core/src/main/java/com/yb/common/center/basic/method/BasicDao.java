@@ -10,16 +10,15 @@ import java.util.List;
 /**
  * dao层增删查改基础服务
  * @author yebing
- * @param <T>
+ * @param <E>
  */
-@Repository
-public interface BasicDao<T extends BasicDTO> {
+public interface BasicDao<E extends BasicDTO> {
     /**
      * 插入实体
      * @param record
      * @return
      */
-    Integer insert(T record);
+    Integer insert(E record);
 
     /**
      * 根据主键删除实体
@@ -33,21 +32,21 @@ public interface BasicDao<T extends BasicDTO> {
      * @param record
      * @return
      */
-    Integer insertSelective(T record);
+    Integer insertSelective(E record);
 
     /**
      * 批量插入实体
      * @param records
      * @return
      */
-    Integer batchSave(@Param("records") List<T> records);
+    Integer batchSave(@Param("records") List<E> records);
 
     /**
      * 根据主键查询
      * @param id
      * @return
      */
-    T selectByPrimaryKey(Long id);
+    E selectByPrimaryKey(Long id);
 
     /**
      * 根据参数查询列表
@@ -55,26 +54,26 @@ public interface BasicDao<T extends BasicDTO> {
      * @param pager
      * @return
      */
-    List<T> selectList(@Param("record") T record, @Param("pager") Pager pager);
+    List<E> selectList(@Param("record") E record, @Param("pager") Pager pager);
 
     /**
      * 根据参数查询列表统计
      * @param record
      * @return
      */
-    Long countTotal(@Param("record") T record);
+    Long countTotal(@Param("record") E record);
 
     /**
      * 根据主键更新实体指定参数
      * @param record
      * @return
      */
-    Integer updateByPrimaryKeySelective(T record);
+    Integer updateByPrimaryKeySelective(E record);
 
     /**
      * 根据主键更新实体
      * @param record
      * @return
      */
-    Integer updateByPrimaryKey(T record);
+    Integer updateByPrimaryKey(E record);
 }

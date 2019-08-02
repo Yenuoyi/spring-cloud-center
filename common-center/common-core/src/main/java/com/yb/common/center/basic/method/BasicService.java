@@ -9,17 +9,17 @@ import java.util.List;
 /**
  * service基础增删查改
  *
- * @param <T>
+ * @param <E>
  * @author yebing
  */
-public interface BasicService<T extends BasicDTO, D extends BasicDao<T>> {
+public interface BasicService<D extends BasicDao,E extends BasicDTO> {
     /**
      * 根据主键删除实体
      *
-     * @param id
+     * @param record
      * @return
      */
-    ExecuteResult<Integer> deleteByPrimaryKey(Long id);
+    ExecuteResult<Integer> deleteByPrimaryKey(E record);
 
     /**
      * 插入实体
@@ -27,7 +27,7 @@ public interface BasicService<T extends BasicDTO, D extends BasicDao<T>> {
      * @param record
      * @return
      */
-    ExecuteResult<Integer> insert(T record);
+    ExecuteResult<Integer> insert(E record);
 
     /**
      * 可选参数插入实体
@@ -35,7 +35,7 @@ public interface BasicService<T extends BasicDTO, D extends BasicDao<T>> {
      * @param record
      * @return
      */
-    ExecuteResult<Integer> insertSelective(T record);
+    ExecuteResult<Integer> insertSelective(E record);
 
     /**
      * 批量插入实体
@@ -43,15 +43,15 @@ public interface BasicService<T extends BasicDTO, D extends BasicDao<T>> {
      * @param records
      * @return
      */
-    ExecuteResult<Integer> batchSave(List<T> records);
+    ExecuteResult<Integer> batchSave(List<E> records);
 
     /**
      * 根据主键查询
      *
-     * @param id
+     * @param record
      * @return
      */
-    ExecuteResult<T> selectByPrimaryKey(Long id);
+    ExecuteResult<E> selectByPrimaryKey(E record);
 
     /**
      * 根据参数查询列表
@@ -60,7 +60,7 @@ public interface BasicService<T extends BasicDTO, D extends BasicDao<T>> {
      * @param pager
      * @return
      */
-    ExecuteResult<DataUtil<T>> selectList(T record, Pager pager);
+    ExecuteResult<DataUtil<E>> selectList(E record, Pager pager);
 
     /**
      * 根据主键更新实体指定参数
@@ -68,7 +68,7 @@ public interface BasicService<T extends BasicDTO, D extends BasicDao<T>> {
      * @param record
      * @return
      */
-    ExecuteResult<Integer> updateByPrimaryKeySelective(T record);
+    ExecuteResult<Integer> updateByPrimaryKeySelective(E record);
 
     /**
      * 根据主键更新实体
@@ -76,6 +76,6 @@ public interface BasicService<T extends BasicDTO, D extends BasicDao<T>> {
      * @param record
      * @return
      */
-    ExecuteResult<Integer> updateByPrimaryKey(T record);
+    ExecuteResult<Integer> updateByPrimaryKey(E record);
 
 }

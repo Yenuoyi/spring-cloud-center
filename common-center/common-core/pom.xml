@@ -80,6 +80,12 @@
             <scope>runtime</scope>
         </dependency>
         <!-- end token -->
+        <!-- start 日志 -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+        <!-- end 日志 -->
     </dependencies>
 
 

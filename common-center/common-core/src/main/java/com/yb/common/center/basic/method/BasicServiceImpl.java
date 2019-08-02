@@ -3,7 +3,7 @@ package com.yb.common.center.basic.method;
 import com.yb.common.center.wrap.DataUtil;
 import com.yb.common.center.wrap.ExecuteResult;
 import com.yb.common.center.Pager;
-import org.slf4j.Logger;
+import org.apache.log4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -13,34 +13,34 @@ import java.util.List;
 /**
  * service基础增删查改
  *
- * @param <T>
+ * @param <D>
  * @author yebing
  */
-public abstract class BasicServiceImpl<T extends BasicDTO, D extends BasicDao<T>> implements BasicService<T, D> {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+public class BasicServiceImpl<D extends BasicDao,E extends BasicDTO> implements BasicService<D,E>  {
+    protected Logger logger = Logger.getLogger(this.getClass());
     @Autowired
     protected D basicDao;
 
     @Override
-    public ExecuteResult<Integer> deleteByPrimaryKey(Long id) {
+    public ExecuteResult<Integer> deleteByPrimaryKey(E record) {
         ExecuteResult<Integer> executeResult = new ExecuteResult<Integer>();
         try {
-            if (StringUtils.isEmpty(id)) {
+            if (StringUtils.isEmpty(record.getId())) {
                 throw new RuntimeException("参数错误：ID非空");
             }
-            Integer result = basicDao.deleteByPrimaryKey(id);
+            Integer result = basicDao.deleteByPrimaryKey(record.getId());
             executeResult.setResult(result);
             executeResult.setResultMessage("成功！");
         } catch (Exception e) {
             executeResult.setResultMessage("异常错误！");
             executeResult.getErrorMessages().add(e.getMessage());
-            logger.error("异常错误", e);
+            logger.error(e);
         }
         return executeResult;
     }
 
     @Override
-    public ExecuteResult<Integer> insert(T record) {
+    public ExecuteResult<Integer> insert(E record) {
         ExecuteResult<Integer> executeResult = new ExecuteResult<Integer>();
         try {
             if (StringUtils.isEmpty(record)) {
@@ -58,7 +58,7 @@ public abstract class BasicServiceImpl<T extends BasicDTO, D extends BasicDao<T>
     }
 
     @Override
-    public ExecuteResult<Integer> insertSelective(T record) {
+    public ExecuteResult<Integer> insertSelective(E record) {
         ExecuteResult<Integer> executeResult = new ExecuteResult<Integer>();
         try {
             if (StringUtils.isEmpty(record)) {
@@ -76,7 +76,7 @@ public abstract class BasicServiceImpl<T extends BasicDTO, D extends BasicDao<T>
     }
 
     @Override
-    public ExecuteResult<Integer> batchSave(List<T> record) {
+    public ExecuteResult<Integer> batchSave(List<E> record) {
         ExecuteResult<Integer> executeResult = new ExecuteResult<Integer>();
         try {
             if (StringUtils.isEmpty(record)) {
@@ -94,13 +94,13 @@ public abstract class BasicServiceImpl<T extends BasicDTO, D extends BasicDao<T>
     }
 
     @Override
-    public ExecuteResult<T> selectByPrimaryKey(Long id) {
-        ExecuteResult<T> executeResult = new ExecuteResult<T>();
+    public ExecuteResult<E> selectByPrimaryKey(E record) {
+        ExecuteResult<E> executeResult = new ExecuteResult<E>();
         try {
-            if (StringUtils.isEmpty(id)) {
+            if (StringUtils.isEmpty(record.getId())) {
                 throw new RuntimeException("参数错误：ID非空");
             }
-            T result = basicDao.selectByPrimaryKey(id);
+            E result = (E) basicDao.selectByPrimaryKey(record.getId());
             executeResult.setResult(result);
             executeResult.setResultMessage("成功！");
         } catch (Exception e) {
@@ -113,15 +113,15 @@ public abstract class BasicServiceImpl<T extends BasicDTO, D extends BasicDao<T>
 
 
     @Override
-    public ExecuteResult<DataUtil<T>> selectList(T record, Pager pager) {
-        ExecuteResult<DataUtil<T>> executeResult = new ExecuteResult<DataUtil<T>>();
+    public ExecuteResult<DataUtil<E>> selectList(E record, Pager pager) {
+        ExecuteResult<DataUtil<E>> executeResult = new ExecuteResult<DataUtil<E>>();
         try {
             if (StringUtils.isEmpty(record)) {
                 throw new RuntimeException("参数错误：对象非空");
             }
-            List<T> result = basicDao.selectList(record, pager);
+            List<E> result = basicDao.selectList(record, pager);
             Integer total = basicDao.countTotal(record).intValue();
-            DataUtil<T> dtoDataUtil = new DataUtil<T>();
+            DataUtil<E> dtoDataUtil = new DataUtil<E>();
             dtoDataUtil.setList(result);
             dtoDataUtil.getPager().setTotalCount(total);
             executeResult.setResult(dtoDataUtil);
@@ -129,13 +129,13 @@ public abstract class BasicServiceImpl<T extends BasicDTO, D extends BasicDao<T>
         } catch (Exception e) {
             executeResult.setResultMessage("异常错误！");
             executeResult.getErrorMessages().add(e.getMessage());
-            logger.error("异常错误", e);
+            logger.error(e);
         }
         return executeResult;
     }
 
     @Override
-    public ExecuteResult<Integer> updateByPrimaryKeySelective(T record) {
+    public ExecuteResult<Integer> updateByPrimaryKeySelective(E record) {
         ExecuteResult<Integer> executeResult = new ExecuteResult<Integer>();
         try {
             if (StringUtils.isEmpty(record.getId())) {
@@ -147,13 +147,13 @@ public abstract class BasicServiceImpl<T extends BasicDTO, D extends BasicDao<T>
         } catch (Exception e) {
             executeResult.setResultMessage("异常错误！");
             executeResult.getErrorMessages().add(e.getMessage());
-            logger.error("异常错误", e);
+            logger.error(e);
         }
         return executeResult;
     }
 
     @Override
-    public ExecuteResult<Integer> updateByPrimaryKey(T record) {
+    public ExecuteResult<Integer> updateByPrimaryKey(E record) {
         ExecuteResult<Integer> executeResult = new ExecuteResult<Integer>();
         try {
             if (StringUtils.isEmpty(record.getId())) {
@@ -165,7 +165,7 @@ public abstract class BasicServiceImpl<T extends BasicDTO, D extends BasicDao<T>
         } catch (Exception e) {
             executeResult.setResultMessage("异常错误！");
             executeResult.getErrorMessages().add(e.getMessage());
-            logger.error("异常错误", e);
+            logger.error(e);
         }
         return executeResult;
     }
