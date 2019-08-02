@@ -11,10 +11,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author yebing
+ * 开启过滤器方法二
+ */
 @Configuration
 public class FilterRegistrationConfig {
 
-    @Bean
+/*    @Bean
     public WebSsoFilter webSsoFilter() {
         return new WebSsoFilter();
     }
@@ -32,5 +36,5 @@ public class FilterRegistrationConfig {
         urlPatterns.add("/*");
         registrationBean.setUrlPatterns(urlPatterns);
         return registrationBean;
-    }
+    }*/
 }
